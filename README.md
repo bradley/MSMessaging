@@ -2,3 +2,5 @@ GradientMessages
 ============================
 
 An example on how to reproduce the gradient chat bubbles as seen on Messages for iOS 7.
+
+![Example](Example.png)
