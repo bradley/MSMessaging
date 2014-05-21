@@ -21,6 +21,9 @@
 		D841A986192C6CD900835BC0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D841A968192C6CD900835BC0 /* UIKit.framework */; };
 		D841A98E192C6CD900835BC0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D841A98C192C6CD900835BC0 /* InfoPlist.strings */; };
 		D841A990192C6CD900835BC0 /* GradientMessagesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A98F192C6CD900835BC0 /* GradientMessagesTests.m */; };
+		D841A99A192C6F4B00835BC0 /* Messages.plist in Resources */ = {isa = PBXBuildFile; fileRef = D841A999192C6F4B00835BC0 /* Messages.plist */; };
+		D841A99D192C727800835BC0 /* MessageBubbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A99C192C727800835BC0 /* MessageBubbleCell.m */; };
+		D841A9A0192C73DB00835BC0 /* MessageBubbleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A99F192C73DB00835BC0 /* MessageBubbleViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,11 @@
 		D841A98B192C6CD900835BC0 /* GradientMessagesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GradientMessagesTests-Info.plist"; sourceTree = "<group>"; };
 		D841A98D192C6CD900835BC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D841A98F192C6CD900835BC0 /* GradientMessagesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GradientMessagesTests.m; sourceTree = "<group>"; };
+		D841A999192C6F4B00835BC0 /* Messages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Messages.plist; sourceTree = "<group>"; };
+		D841A99B192C727800835BC0 /* MessageBubbleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBubbleCell.h; sourceTree = "<group>"; };
+		D841A99C192C727800835BC0 /* MessageBubbleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBubbleCell.m; sourceTree = "<group>"; };
+		D841A99E192C73DB00835BC0 /* MessageBubbleViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBubbleViewModel.h; sourceTree = "<group>"; };
+		D841A99F192C73DB00835BC0 /* MessageBubbleViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBubbleViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +123,10 @@
 				D841A973192C6CD900835BC0 /* AppDelegate.h */,
 				D841A974192C6CD900835BC0 /* AppDelegate.m */,
 				D841A976192C6CD900835BC0 /* Main.storyboard */,
+				D841A99B192C727800835BC0 /* MessageBubbleCell.h */,
+				D841A99C192C727800835BC0 /* MessageBubbleCell.m */,
+				D841A99E192C73DB00835BC0 /* MessageBubbleViewModel.h */,
+				D841A99F192C73DB00835BC0 /* MessageBubbleViewModel.m */,
 				D841A979192C6CD900835BC0 /* ViewController.h */,
 				D841A97A192C6CD900835BC0 /* ViewController.m */,
 				D841A97C192C6CD900835BC0 /* Images.xcassets */,
@@ -127,9 +139,10 @@
 			isa = PBXGroup;
 			children = (
 				D841A96C192C6CD900835BC0 /* GradientMessages-Info.plist */,
+				D841A972192C6CD900835BC0 /* GradientMessages-Prefix.pch */,
 				D841A96D192C6CD900835BC0 /* InfoPlist.strings */,
 				D841A970192C6CD900835BC0 /* main.m */,
-				D841A972192C6CD900835BC0 /* GradientMessages-Prefix.pch */,
+				D841A999192C6F4B00835BC0 /* Messages.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -228,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D841A99A192C6F4B00835BC0 /* Messages.plist in Resources */,
 				D841A97D192C6CD900835BC0 /* Images.xcassets in Resources */,
 				D841A96F192C6CD900835BC0 /* InfoPlist.strings in Resources */,
 				D841A978192C6CD900835BC0 /* Main.storyboard in Resources */,
@@ -251,7 +265,9 @@
 			files = (
 				D841A97B192C6CD900835BC0 /* ViewController.m in Sources */,
 				D841A975192C6CD900835BC0 /* AppDelegate.m in Sources */,
+				D841A9A0192C73DB00835BC0 /* MessageBubbleViewModel.m in Sources */,
 				D841A971192C6CD900835BC0 /* main.m in Sources */,
+				D841A99D192C727800835BC0 /* MessageBubbleCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +472,7 @@
 				D841A995192C6CD900835BC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D841A996192C6CD900835BC0 /* Build configuration list for PBXNativeTarget "GradientMessagesTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +481,7 @@
 				D841A998192C6CD900835BC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

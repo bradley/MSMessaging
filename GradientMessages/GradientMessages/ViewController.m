@@ -7,8 +7,16 @@
 //
 
 #import "ViewController.h"
+#import "MessageBubbleViewModel.h"
+#import "MessageBubbleCell.h"
 
-@interface ViewController ()
+@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) NSMutableArray *messages;
+@property (nonatomic, strong) NSArray *sampleMessages;
+
+- (IBAction)addMessage:(id)sender;
 
 @end
 
@@ -16,14 +24,62 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	[super viewDidLoad];
+	
+	self.messages = [NSMutableArray array];
+	
+	NSString *sampleMessagesPath = [[NSBundle mainBundle] pathForResource:@"Messages" ofType:@"plist"];
+	self.sampleMessages = [NSArray arrayWithContentsOfFile:sampleMessagesPath];
+	
+	self.collectionView.delegate = self;
+	self.collectionView.dataSource = self;
 }
 
-- (void)didReceiveMemoryWarning
+- (IBAction)addMessage:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+	int randomIndex = rand() % self.sampleMessages.count ;
+	NSString *randomMessage = self.sampleMessages[ randomIndex ];
+	[self.messages addObject:randomMessage];
+	[self.collectionView reloadData];
+}
+
+#pragma mark UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+	return self.messages.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	NSString *message = (indexPath.row < self.messages.count) ? self.messages[ indexPath.row ] : nil;
+	MessageBubbleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"messageCell" forIndexPath:indexPath];
+	
+	if (message && cell) {
+		UICollectionViewLayoutAttributes *attributes = [collectionView layoutAttributesForItemAtIndexPath:indexPath];
+		MessageBubbleViewModel *viewModel = [[MessageBubbleViewModel alloc] initWithMessageText:message viewWidth:attributes.frame.size.width gradientHeight:collectionView.bounds.size.height];
+		[cell setViewModel:viewModel];
+		cell.gradientOffset = (-self.collectionView.contentOffset.y + attributes.frame.origin.y);
+	}
+	
+	return cell;
+}
+
+#pragma mark UICollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	NSString *message = self.messages[ indexPath.row ];
+	
+	MessageBubbleViewModel *viewModel = [[MessageBubbleViewModel alloc] initWithMessageText:message viewWidth:collectionView.bounds.size.width gradientHeight:collectionView.bounds.size.height];
+	return viewModel.cellSize;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+	for (MessageBubbleCell *cell in self.collectionView.visibleCells) {
+		cell.gradientOffset = (-self.collectionView.contentOffset.y + cell.frame.origin.y);
+	}
 }
 
 @end
