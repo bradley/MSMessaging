@@ -7,12 +7,13 @@
 //
 
 #import "ViewController.h"
-#import "MessageBubbleViewModel.h"
+#import "MessageBubbleController.h"
 #import "MessageBubbleCell.h"
 
 @interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) MessageBubbleController *messageBubbleController;
 @property (nonatomic, strong) NSMutableArray *messages;
 @property (nonatomic, strong) NSArray *sampleMessages;
 
@@ -26,6 +27,8 @@
 {
 	[super viewDidLoad];
 	
+	self.messageBubbleController = [[MessageBubbleController alloc] init];
+	self.messageBubbleController.collectionViewSize = self.collectionView.bounds.size;
 	self.messages = [NSMutableArray array];
 	
 	NSString *sampleMessagesPath = [[NSBundle mainBundle] pathForResource:@"Messages" ofType:@"plist"];
@@ -54,10 +57,9 @@
 {
 	NSString *message = (indexPath.row < self.messages.count) ? self.messages[ indexPath.row ] : nil;
 	MessageBubbleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"messageCell" forIndexPath:indexPath];
-	
 	if (message && cell) {
 		UICollectionViewLayoutAttributes *attributes = [collectionView layoutAttributesForItemAtIndexPath:indexPath];
-		MessageBubbleViewModel *viewModel = [[MessageBubbleViewModel alloc] initWithMessageText:message viewWidth:attributes.frame.size.width gradientHeight:collectionView.bounds.size.height];
+		MessageBubbleViewModel *viewModel = [self.messageBubbleController viewModelForSentMessage:message];
 		[cell setViewModel:viewModel];
 		cell.gradientOffset = (-self.collectionView.contentOffset.y + attributes.frame.origin.y);
 	}
@@ -70,9 +72,8 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	NSString *message = self.messages[ indexPath.row ];
-	
-	MessageBubbleViewModel *viewModel = [[MessageBubbleViewModel alloc] initWithMessageText:message viewWidth:collectionView.bounds.size.width gradientHeight:collectionView.bounds.size.height];
-	return viewModel.cellSize;
+	MessageBubbleViewModel *viewModel = [self.messageBubbleController viewModelForSentMessage:message];
+	return [viewModel.layoutSpec cellSize];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

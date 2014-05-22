@@ -24,6 +24,8 @@
 		D841A99A192C6F4B00835BC0 /* Messages.plist in Resources */ = {isa = PBXBuildFile; fileRef = D841A999192C6F4B00835BC0 /* Messages.plist */; };
 		D841A99D192C727800835BC0 /* MessageBubbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A99C192C727800835BC0 /* MessageBubbleCell.m */; };
 		D841A9A0192C73DB00835BC0 /* MessageBubbleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A99F192C73DB00835BC0 /* MessageBubbleViewModel.m */; };
+		D841A9A3192D955700835BC0 /* MessageBubbleLayoutSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A9A2192D955700835BC0 /* MessageBubbleLayoutSpec.m */; };
+		D841A9A7192DA5F200835BC0 /* MessageBubbleController.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A9A6192DA5F200835BC0 /* MessageBubbleController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,10 @@
 		D841A99C192C727800835BC0 /* MessageBubbleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBubbleCell.m; sourceTree = "<group>"; };
 		D841A99E192C73DB00835BC0 /* MessageBubbleViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBubbleViewModel.h; sourceTree = "<group>"; };
 		D841A99F192C73DB00835BC0 /* MessageBubbleViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBubbleViewModel.m; sourceTree = "<group>"; };
+		D841A9A1192D955700835BC0 /* MessageBubbleLayoutSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBubbleLayoutSpec.h; sourceTree = "<group>"; };
+		D841A9A2192D955700835BC0 /* MessageBubbleLayoutSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBubbleLayoutSpec.m; sourceTree = "<group>"; };
+		D841A9A5192DA5F200835BC0 /* MessageBubbleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBubbleController.h; sourceTree = "<group>"; };
+		D841A9A6192DA5F200835BC0 /* MessageBubbleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBubbleController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,13 +126,10 @@
 		D841A96A192C6CD900835BC0 /* GradientMessages */ = {
 			isa = PBXGroup;
 			children = (
+				D841A9A4192DA5CF00835BC0 /* MessageBubble */,
 				D841A973192C6CD900835BC0 /* AppDelegate.h */,
 				D841A974192C6CD900835BC0 /* AppDelegate.m */,
 				D841A976192C6CD900835BC0 /* Main.storyboard */,
-				D841A99B192C727800835BC0 /* MessageBubbleCell.h */,
-				D841A99C192C727800835BC0 /* MessageBubbleCell.m */,
-				D841A99E192C73DB00835BC0 /* MessageBubbleViewModel.h */,
-				D841A99F192C73DB00835BC0 /* MessageBubbleViewModel.m */,
 				D841A979192C6CD900835BC0 /* ViewController.h */,
 				D841A97A192C6CD900835BC0 /* ViewController.m */,
 				D841A97C192C6CD900835BC0 /* Images.xcassets */,
@@ -163,6 +166,21 @@
 				D841A98C192C6CD900835BC0 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D841A9A4192DA5CF00835BC0 /* MessageBubble */ = {
+			isa = PBXGroup;
+			children = (
+				D841A99B192C727800835BC0 /* MessageBubbleCell.h */,
+				D841A99C192C727800835BC0 /* MessageBubbleCell.m */,
+				D841A9A5192DA5F200835BC0 /* MessageBubbleController.h */,
+				D841A9A6192DA5F200835BC0 /* MessageBubbleController.m */,
+				D841A9A1192D955700835BC0 /* MessageBubbleLayoutSpec.h */,
+				D841A9A2192D955700835BC0 /* MessageBubbleLayoutSpec.m */,
+				D841A99E192C73DB00835BC0 /* MessageBubbleViewModel.h */,
+				D841A99F192C73DB00835BC0 /* MessageBubbleViewModel.m */,
+			);
+			name = MessageBubble;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,7 +281,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D841A9A3192D955700835BC0 /* MessageBubbleLayoutSpec.m in Sources */,
 				D841A97B192C6CD900835BC0 /* ViewController.m in Sources */,
+				D841A9A7192DA5F200835BC0 /* MessageBubbleController.m in Sources */,
 				D841A975192C6CD900835BC0 /* AppDelegate.m in Sources */,
 				D841A9A0192C73DB00835BC0 /* MessageBubbleViewModel.m in Sources */,
 				D841A971192C6CD900835BC0 /* main.m in Sources */,

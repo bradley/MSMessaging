@@ -8,15 +8,13 @@
 
 @import Foundation;
 
+#import "MessageBubbleLayoutSpec.h"
+
 @interface MessageBubbleViewModel : NSObject
 
-@property (nonatomic, copy, readonly) NSString *messageText;
-@property (nonatomic, strong, readonly) UIFont *font;
-@property (nonatomic, assign, readonly) CGSize cellSize;
-@property (nonatomic, assign, readonly) CGRect messageFrame;
-@property (nonatomic, assign, readonly) CGRect gradientFrame;
-@property (nonatomic, assign, readonly) CGRect bubbleMaskFrame;
+@property (nonatomic, copy, readonly) NSString *messageLabelText;
+@property (nonatomic, strong, readonly) MessageBubbleLayoutSpec *layoutSpec;
 
-- (instancetype)initWithMessageText:(NSString *)messageText viewWidth:(CGFloat)viewWidth gradientHeight:(CGFloat)gradientHeight;
+- (instancetype)initWithMessageLabelText:(NSString *)messageLabelText layoutSpec:(MessageBubbleLayoutSpec *)layoutSpec;
 
 @end

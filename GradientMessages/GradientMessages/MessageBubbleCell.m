@@ -7,7 +7,6 @@
 //
 
 #import "MessageBubbleCell.h"
-#import "MessageBubbleViewModel.h"
 
 @interface MessageBubbleCell ()
 
@@ -45,10 +44,12 @@
 {
 	_viewModel = viewModel;
 	
-	self.messageLabel.text = viewModel.messageText;
-	self.messageLabel.frame = viewModel.messageFrame;
-	self.gradientLayer.frame = viewModel.gradientFrame;
-	self.bubbleMaskLayer.frame = viewModel.bubbleMaskFrame;
+	self.bubbleMaskLayer.contentsCenter = [viewModel.layoutSpec bubbleMaskLayerContentsCenter];
+
+	self.messageLabel.text = viewModel.messageLabelText;
+	self.messageLabel.frame = [viewModel.layoutSpec messageLabelFrame];
+	self.gradientLayer.frame = [viewModel.layoutSpec gradientFrame];
+	self.bubbleMaskLayer.frame = [viewModel.layoutSpec bubbleMaskFrame];
 }
 
 - (void)setGradientOffset:(CGFloat)gradientOffset
@@ -59,11 +60,6 @@
 
 - (void)commonInit
 {
-	const CGFloat imageWidth = 48.f;
-	const CGFloat imageHeight = 35.f;
-	const CGFloat minX = 20.f;
-	const CGFloat minY = 16.f;
-	
 	NSDictionary *nullImplicitAnims = @{
 		@"position" : [NSNull null],
 		@"bounds" : [NSNull null],
@@ -81,7 +77,6 @@
 	self.bubbleMaskLayer.anchorPoint = CGPointZero;
 	self.bubbleMaskLayer.contentsScale = [UIScreen mainScreen].scale;
 	self.bubbleMaskLayer.contents = (id)[UIImage imageNamed:@"MessageBubble"].CGImage;
-	self.bubbleMaskLayer.contentsCenter = CGRectMake(minX/imageWidth, minY/imageHeight, 0.f, 0.f);
 	[self.layer addSublayer:self.bubbleMaskLayer];
 	
 	self.messageLabel = [[UILabel alloc] init];

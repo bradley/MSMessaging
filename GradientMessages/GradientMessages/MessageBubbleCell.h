@@ -8,7 +8,7 @@
 
 @import UIKit;
 
-@class MessageBubbleViewModel;
+#import "MessageBubbleViewModel.h"
 
 @interface MessageBubbleCell : UICollectionViewCell
 
