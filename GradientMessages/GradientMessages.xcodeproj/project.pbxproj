@@ -26,6 +26,7 @@
 		D841A9A0192C73DB00835BC0 /* MessageBubbleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A99F192C73DB00835BC0 /* MessageBubbleViewModel.m */; };
 		D841A9A3192D955700835BC0 /* MessageBubbleLayoutSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A9A2192D955700835BC0 /* MessageBubbleLayoutSpec.m */; };
 		D841A9A7192DA5F200835BC0 /* MessageBubbleController.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A9A6192DA5F200835BC0 /* MessageBubbleController.m */; };
+		D841A9AB192DACC500835BC0 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A9AA192DACC500835BC0 /* Message.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		D841A9A2192D955700835BC0 /* MessageBubbleLayoutSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBubbleLayoutSpec.m; sourceTree = "<group>"; };
 		D841A9A5192DA5F200835BC0 /* MessageBubbleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBubbleController.h; sourceTree = "<group>"; };
 		D841A9A6192DA5F200835BC0 /* MessageBubbleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBubbleController.m; sourceTree = "<group>"; };
+		D841A9A9192DACC500835BC0 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		D841A9AA192DACC500835BC0 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,12 +129,10 @@
 		D841A96A192C6CD900835BC0 /* GradientMessages */ = {
 			isa = PBXGroup;
 			children = (
-				D841A9A4192DA5CF00835BC0 /* MessageBubble */,
-				D841A973192C6CD900835BC0 /* AppDelegate.h */,
-				D841A974192C6CD900835BC0 /* AppDelegate.m */,
+				D841A9AC192DAD3600835BC0 /* Controller */,
+				D841A9A8192DACBC00835BC0 /* Model */,
+				D841A9AD192DAD4700835BC0 /* View */,
 				D841A976192C6CD900835BC0 /* Main.storyboard */,
-				D841A979192C6CD900835BC0 /* ViewController.h */,
-				D841A97A192C6CD900835BC0 /* ViewController.m */,
 				D841A97C192C6CD900835BC0 /* Images.xcassets */,
 				D841A96B192C6CD900835BC0 /* Supporting Files */,
 			);
@@ -168,19 +169,39 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D841A9A4192DA5CF00835BC0 /* MessageBubble */ = {
+		D841A9A8192DACBC00835BC0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D841A99B192C727800835BC0 /* MessageBubbleCell.h */,
-				D841A99C192C727800835BC0 /* MessageBubbleCell.m */,
-				D841A9A5192DA5F200835BC0 /* MessageBubbleController.h */,
-				D841A9A6192DA5F200835BC0 /* MessageBubbleController.m */,
+				D841A9A9192DACC500835BC0 /* Message.h */,
+				D841A9AA192DACC500835BC0 /* Message.m */,
 				D841A9A1192D955700835BC0 /* MessageBubbleLayoutSpec.h */,
 				D841A9A2192D955700835BC0 /* MessageBubbleLayoutSpec.m */,
 				D841A99E192C73DB00835BC0 /* MessageBubbleViewModel.h */,
 				D841A99F192C73DB00835BC0 /* MessageBubbleViewModel.m */,
 			);
-			name = MessageBubble;
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D841A9AC192DAD3600835BC0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D841A973192C6CD900835BC0 /* AppDelegate.h */,
+				D841A974192C6CD900835BC0 /* AppDelegate.m */,
+				D841A9A5192DA5F200835BC0 /* MessageBubbleController.h */,
+				D841A9A6192DA5F200835BC0 /* MessageBubbleController.m */,
+				D841A979192C6CD900835BC0 /* ViewController.h */,
+				D841A97A192C6CD900835BC0 /* ViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		D841A9AD192DAD4700835BC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D841A99B192C727800835BC0 /* MessageBubbleCell.h */,
+				D841A99C192C727800835BC0 /* MessageBubbleCell.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D841A9A3192D955700835BC0 /* MessageBubbleLayoutSpec.m in Sources */,
+				D841A9AB192DACC500835BC0 /* Message.m in Sources */,
 				D841A97B192C6CD900835BC0 /* ViewController.m in Sources */,
 				D841A9A7192DA5F200835BC0 /* MessageBubbleController.m in Sources */,
 				D841A975192C6CD900835BC0 /* AppDelegate.m in Sources */,

@@ -9,15 +9,18 @@
 #import "ViewController.h"
 #import "MessageBubbleController.h"
 #import "MessageBubbleCell.h"
+#import "Message.h"
 
 @interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) MessageBubbleController *messageBubbleController;
 @property (nonatomic, strong) NSMutableArray *messages;
-@property (nonatomic, strong) NSArray *sampleMessages;
+@property (nonatomic, strong) NSArray *sampleMessageStrings;
 
 - (IBAction)addMessage:(id)sender;
+
+- (Message *)createRandomMessage;
 
 @end
 
@@ -31,8 +34,8 @@
 	self.messageBubbleController.collectionViewSize = self.collectionView.bounds.size;
 	self.messages = [NSMutableArray array];
 	
-	NSString *sampleMessagesPath = [[NSBundle mainBundle] pathForResource:@"Messages" ofType:@"plist"];
-	self.sampleMessages = [NSArray arrayWithContentsOfFile:sampleMessagesPath];
+	NSString *sampleMessageStringsPath = [[NSBundle mainBundle] pathForResource:@"Messages" ofType:@"plist"];
+	self.sampleMessageStrings = [NSArray arrayWithContentsOfFile:sampleMessageStringsPath];
 	
 	self.collectionView.delegate = self;
 	self.collectionView.dataSource = self;
@@ -40,10 +43,17 @@
 
 - (IBAction)addMessage:(id)sender
 {
-	int randomIndex = rand() % self.sampleMessages.count ;
-	NSString *randomMessage = self.sampleMessages[ randomIndex ];
-	[self.messages addObject:randomMessage];
+	Message *message = [self createRandomMessage];
+	[self.messages addObject:message];
 	[self.collectionView reloadData];
+}
+
+- (Message *)createRandomMessage
+{
+	int randomIndex = rand() % self.sampleMessageStrings.count;
+	NSString *randomMessageText = self.sampleMessageStrings[ randomIndex ];
+	BOOL randomIsAuthor = rand() % 2;
+	return [[Message alloc] initWithMessageText:randomMessageText isAuthor:randomIsAuthor];
 }
 
 #pragma mark UICollectionViewDataSource
@@ -55,11 +65,11 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSString *message = (indexPath.row < self.messages.count) ? self.messages[ indexPath.row ] : nil;
+	Message *message = (indexPath.row < self.messages.count) ? self.messages[ indexPath.row ] : nil;
 	MessageBubbleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"messageCell" forIndexPath:indexPath];
 	if (message && cell) {
 		UICollectionViewLayoutAttributes *attributes = [collectionView layoutAttributesForItemAtIndexPath:indexPath];
-		MessageBubbleViewModel *viewModel = [self.messageBubbleController viewModelForSentMessage:message];
+		MessageBubbleViewModel *viewModel = [self.messageBubbleController viewModelForSentMessage:message.messageText isAuthor:message.isAuthor];
 		[cell setViewModel:viewModel];
 		cell.gradientOffset = (-self.collectionView.contentOffset.y + attributes.frame.origin.y);
 	}
@@ -71,8 +81,8 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSString *message = self.messages[ indexPath.row ];
-	MessageBubbleViewModel *viewModel = [self.messageBubbleController viewModelForSentMessage:message];
+	Message *message = self.messages[ indexPath.row ];
+	MessageBubbleViewModel *viewModel = [self.messageBubbleController viewModelForSentMessage:message.messageText isAuthor:message.isAuthor];
 	return [viewModel.layoutSpec cellSize];
 }
 

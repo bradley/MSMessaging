@@ -44,9 +44,19 @@
 {
 	_viewModel = viewModel;
 	
-	self.bubbleMaskLayer.contentsCenter = [viewModel.layoutSpec bubbleMaskLayerContentsCenter];
-
+	if (viewModel.messageBackgroundColor) {
+		[self.gradientLayer removeFromSuperlayer];
+		self.bubbleMaskLayer.backgroundColor = viewModel.messageBackgroundColor.CGColor;
+	}
+	else {
+		[self.layer insertSublayer:self.gradientLayer below:self.bubbleMaskLayer];
+		self.bubbleMaskLayer.backgroundColor = nil;
+	}
+	
 	self.messageLabel.text = viewModel.messageLabelText;
+	self.messageLabel.textColor = viewModel.messageLabelColor;
+	self.bubbleMaskLayer.contentsCenter = [viewModel.layoutSpec bubbleMaskLayerContentsCenter];
+	
 	self.messageLabel.frame = [viewModel.layoutSpec messageLabelFrame];
 	self.gradientLayer.frame = [viewModel.layoutSpec gradientFrame];
 	self.bubbleMaskLayer.frame = [viewModel.layoutSpec bubbleMaskFrame];
@@ -63,6 +73,7 @@
 	NSDictionary *nullImplicitAnims = @{
 		@"position" : [NSNull null],
 		@"bounds" : [NSNull null],
+		@"backgroundColor" : [NSNull null],
 	};
 	
 	self.gradientLayer = [CALayer layer];
@@ -70,7 +81,6 @@
 	self.gradientLayer.anchorPoint = CGPointZero;
 	self.gradientLayer.contentsScale = [UIScreen mainScreen].scale;
 	self.gradientLayer.contents = (id)[UIImage imageNamed:@"BlueGradient"].CGImage;
-	[self.layer addSublayer:self.gradientLayer];
 	
 	self.bubbleMaskLayer = [CALayer layer];
 	self.bubbleMaskLayer.actions = nullImplicitAnims;
@@ -82,7 +92,6 @@
 	self.messageLabel = [[UILabel alloc] init];
 	self.messageLabel.numberOfLines = 0;
 	self.messageLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-	self.messageLabel.textColor = [UIColor whiteColor];
 	[self addSubview:self.messageLabel];
 }
 

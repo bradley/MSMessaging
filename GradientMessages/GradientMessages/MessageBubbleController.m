@@ -10,7 +10,7 @@
 
 @implementation MessageBubbleController
 
-- (MessageBubbleViewModel *)viewModelForSentMessage:(NSString *)sentMessage;
+- (MessageBubbleViewModel *)viewModelForSentMessage:(NSString *)sentMessage isAuthor:(BOOL)isAuthor
 {
 	MessageBubbleLayoutSpec *layoutSpec = [[MessageBubbleLayoutSpec alloc] init];
 	layoutSpec.collectionViewSize = self.collectionViewSize;
@@ -26,7 +26,7 @@
 																		  attributes:@{ NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody] }
 																			  context:nil].size;
 
-	return [[MessageBubbleViewModel alloc] initWithMessageLabelText:sentMessage layoutSpec:layoutSpec];
+	return [[MessageBubbleViewModel alloc] initWithMessageLabelText:sentMessage isAuthor:isAuthor layoutSpec:layoutSpec];
 }
 
 @end
