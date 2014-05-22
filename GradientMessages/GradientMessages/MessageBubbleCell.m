@@ -60,6 +60,7 @@
 	self.messageLabel.frame = [viewModel.layoutSpec messageLabelFrame];
 	self.gradientLayer.frame = [viewModel.layoutSpec gradientFrame];
 	self.bubbleMaskLayer.frame = [viewModel.layoutSpec bubbleMaskFrame];
+	self.bubbleMaskLayer.transform = viewModel.bubbleMaskTransform;
 }
 
 - (void)setGradientOffset:(CGFloat)gradientOffset
@@ -74,6 +75,7 @@
 		@"position" : [NSNull null],
 		@"bounds" : [NSNull null],
 		@"backgroundColor" : [NSNull null],
+		@"transform" : [NSNull null],
 	};
 	
 	self.gradientLayer = [CALayer layer];
@@ -84,7 +86,6 @@
 	
 	self.bubbleMaskLayer = [CALayer layer];
 	self.bubbleMaskLayer.actions = nullImplicitAnims;
-	self.bubbleMaskLayer.anchorPoint = CGPointZero;
 	self.bubbleMaskLayer.contentsScale = [UIScreen mainScreen].scale;
 	self.bubbleMaskLayer.contents = (id)[UIImage imageNamed:@"MessageBubble"].CGImage;
 	[self.layer addSublayer:self.bubbleMaskLayer];

@@ -14,6 +14,6 @@
 
 @property (nonatomic, assign, readwrite) CGSize collectionViewSize;
 
-- (MessageBubbleViewModel *)viewModelForSentMessage:(NSString *)sentMessage isAuthor:(BOOL)isAuthor;
+- (MessageBubbleViewModel *)viewModelForMessageText:(NSString *)messageText isAuthor:(BOOL)isAuthor;
 
 @end

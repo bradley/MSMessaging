@@ -13,6 +13,7 @@
 @property (nonatomic, copy) NSString *messageLabelText;
 @property (nonatomic, strong) UIColor *messageLabelColor;
 @property (nonatomic, strong) UIColor *messageBackgroundColor;
+@property (nonatomic, assign) CATransform3D bubbleMaskTransform;
 @property (nonatomic, strong) MessageBubbleLayoutSpec *layoutSpec;
 
 @end
@@ -25,8 +26,9 @@
 	if (self) {
 		self.messageLabelText = messageLabelText;
 		self.messageLabelColor = isAuthor ? [UIColor whiteColor] : [UIColor blackColor];
-		self.layoutSpec = layoutSpec;
 		self.messageBackgroundColor = isAuthor ? nil : [UIColor colorWithRed:229.f/255.f green:229.f/255.f blue:234.f/255.f alpha:1.f];
+		self.bubbleMaskTransform = isAuthor ? CATransform3DIdentity : CATransform3DMakeRotation(M_PI, 0.0f, 1.0f, 0.0f);
+		self.layoutSpec = layoutSpec;
 	}
 	
 	return self;

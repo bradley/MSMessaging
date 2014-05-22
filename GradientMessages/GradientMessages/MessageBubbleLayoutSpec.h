@@ -10,6 +10,7 @@
 
 @interface MessageBubbleLayoutSpec : NSObject
 
+@property (nonatomic, assign, readwrite) BOOL alignMessageLabelRight;
 @property (nonatomic, assign, readwrite) CGSize collectionViewSize;
 @property (nonatomic, assign, readwrite) CGSize messageLabelSize;
 

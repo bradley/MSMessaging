@@ -29,7 +29,7 @@
 	CGFloat x = self.messageBubbleInsets.left;
 	CGFloat y = self.messageBubbleInsets.top;
 
-	if (YES) {
+	if (self.alignMessageLabelRight) {
 		x += (maxBubbleWidth - width);
 	}
 	
@@ -41,7 +41,7 @@
 	CGFloat x = self.messageBubbleInsets.left + self.messageLabelInsets.left;
 	CGFloat y = self.messageBubbleInsets.top + self.messageLabelInsets.top;
 	
-	if (YES) {
+	if (self.alignMessageLabelRight) {
 		x += self.collectionViewSize.width - x - self.messageLabelSize.width - self.messageLabelInsets.right - self.messageBubbleInsets.right;
 	}
 	
@@ -55,7 +55,7 @@
 	CGFloat x = self.messageBubbleInsets.left;
 	CGFloat y = self.messageBubbleInsets.top + self.messageLabelInsets.top + (self.messageLabelSize.height * 0.5f);
 	
-	if (YES) {
+	if (self.alignMessageLabelRight) {
 		x += (maxBubbleWidth - width);
 	}
 		

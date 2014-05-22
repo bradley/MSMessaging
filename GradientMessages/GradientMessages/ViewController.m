@@ -69,7 +69,7 @@
 	MessageBubbleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"messageCell" forIndexPath:indexPath];
 	if (message && cell) {
 		UICollectionViewLayoutAttributes *attributes = [collectionView layoutAttributesForItemAtIndexPath:indexPath];
-		MessageBubbleViewModel *viewModel = [self.messageBubbleController viewModelForSentMessage:message.messageText isAuthor:message.isAuthor];
+		MessageBubbleViewModel *viewModel = [self.messageBubbleController viewModelForMessageText:message.messageText isAuthor:message.isAuthor];
 		[cell setViewModel:viewModel];
 		cell.gradientOffset = (-self.collectionView.contentOffset.y + attributes.frame.origin.y);
 	}
@@ -82,7 +82,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	Message *message = self.messages[ indexPath.row ];
-	MessageBubbleViewModel *viewModel = [self.messageBubbleController viewModelForSentMessage:message.messageText isAuthor:message.isAuthor];
+	MessageBubbleViewModel *viewModel = [self.messageBubbleController viewModelForMessageText:message.messageText isAuthor:message.isAuthor];
 	return [viewModel.layoutSpec cellSize];
 }
 
