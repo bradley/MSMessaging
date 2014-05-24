@@ -27,6 +27,10 @@
 		D841A9A3192D955700835BC0 /* MessageBubbleLayoutSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A9A2192D955700835BC0 /* MessageBubbleLayoutSpec.m */; };
 		D841A9A7192DA5F200835BC0 /* MessageBubbleController.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A9A6192DA5F200835BC0 /* MessageBubbleController.m */; };
 		D841A9AB192DACC500835BC0 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A9AA192DACC500835BC0 /* Message.m */; };
+		D85F458C1930699400FDA5CE /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D85F458B1930699400FDA5CE /* MessageViewController.m */; };
+		D8B465F4192ED22900DE8766 /* MessageInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B465F3192ED22900DE8766 /* MessageInputView.m */; };
+		D8B465F7192ED39600DE8766 /* MessageInputLayoutSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B465F6192ED39600DE8766 /* MessageInputLayoutSpec.m */; };
+		D8B465FA192ED44D00DE8766 /* MessageInputViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B465F9192ED44D00DE8766 /* MessageInputViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +74,14 @@
 		D841A9A6192DA5F200835BC0 /* MessageBubbleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBubbleController.m; sourceTree = "<group>"; };
 		D841A9A9192DACC500835BC0 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		D841A9AA192DACC500835BC0 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		D85F458A1930699400FDA5CE /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		D85F458B1930699400FDA5CE /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		D8B465F2192ED22900DE8766 /* MessageInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageInputView.h; sourceTree = "<group>"; };
+		D8B465F3192ED22900DE8766 /* MessageInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageInputView.m; sourceTree = "<group>"; };
+		D8B465F5192ED39600DE8766 /* MessageInputLayoutSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageInputLayoutSpec.h; sourceTree = "<group>"; };
+		D8B465F6192ED39600DE8766 /* MessageInputLayoutSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageInputLayoutSpec.m; sourceTree = "<group>"; };
+		D8B465F8192ED44D00DE8766 /* MessageInputViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageInputViewModel.h; sourceTree = "<group>"; };
+		D8B465F9192ED44D00DE8766 /* MessageInputViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageInputViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +190,10 @@
 				D841A9A2192D955700835BC0 /* MessageBubbleLayoutSpec.m */,
 				D841A99E192C73DB00835BC0 /* MessageBubbleViewModel.h */,
 				D841A99F192C73DB00835BC0 /* MessageBubbleViewModel.m */,
+				D8B465F5192ED39600DE8766 /* MessageInputLayoutSpec.h */,
+				D8B465F6192ED39600DE8766 /* MessageInputLayoutSpec.m */,
+				D8B465F8192ED44D00DE8766 /* MessageInputViewModel.h */,
+				D8B465F9192ED44D00DE8766 /* MessageInputViewModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -189,6 +205,8 @@
 				D841A974192C6CD900835BC0 /* AppDelegate.m */,
 				D841A9A5192DA5F200835BC0 /* MessageBubbleController.h */,
 				D841A9A6192DA5F200835BC0 /* MessageBubbleController.m */,
+				D85F458A1930699400FDA5CE /* MessageViewController.h */,
+				D85F458B1930699400FDA5CE /* MessageViewController.m */,
 				D841A979192C6CD900835BC0 /* ViewController.h */,
 				D841A97A192C6CD900835BC0 /* ViewController.m */,
 			);
@@ -200,6 +218,8 @@
 			children = (
 				D841A99B192C727800835BC0 /* MessageBubbleCell.h */,
 				D841A99C192C727800835BC0 /* MessageBubbleCell.m */,
+				D8B465F2192ED22900DE8766 /* MessageInputView.h */,
+				D8B465F3192ED22900DE8766 /* MessageInputView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -302,9 +322,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8B465FA192ED44D00DE8766 /* MessageInputViewModel.m in Sources */,
+				D8B465F4192ED22900DE8766 /* MessageInputView.m in Sources */,
 				D841A9A3192D955700835BC0 /* MessageBubbleLayoutSpec.m in Sources */,
 				D841A9AB192DACC500835BC0 /* Message.m in Sources */,
+				D8B465F7192ED39600DE8766 /* MessageInputLayoutSpec.m in Sources */,
 				D841A97B192C6CD900835BC0 /* ViewController.m in Sources */,
+				D85F458C1930699400FDA5CE /* MessageViewController.m in Sources */,
 				D841A9A7192DA5F200835BC0 /* MessageBubbleController.m in Sources */,
 				D841A975192C6CD900835BC0 /* AppDelegate.m in Sources */,
 				D841A9A0192C73DB00835BC0 /* MessageBubbleViewModel.m in Sources */,
