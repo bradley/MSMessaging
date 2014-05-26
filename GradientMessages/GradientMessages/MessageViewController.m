@@ -183,6 +183,7 @@
 
 - (void)messageInputView:(MessageInputView *)messageInputView didSendMessageText:(NSString *)messageText
 {
+	[self.messageInputView clearInputText];
 	[self.delegate messageViewController:self didSendMessageText:messageText];
 }
 
