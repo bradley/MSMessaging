@@ -9,11 +9,13 @@
 @import Foundation;
 
 #import "MessageBubbleViewModel.h"
+#import "MessageInputViewModel.h"
 
 @interface MessageBubbleController : NSObject
 
 @property (nonatomic, assign, readwrite) CGSize collectionViewSize;
 
 - (MessageBubbleViewModel *)viewModelForMessageText:(NSString *)messageText isAuthor:(BOOL)isAuthor;
+- (MessageInputViewModel *)viewModel;
 
 @end

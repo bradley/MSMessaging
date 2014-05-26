@@ -31,50 +31,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Eex-h0-oSh">
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0C-9P-vFv">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="0.0" id="KyH-tp-jJg">
-                                    <size key="itemSize" width="320" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="messageCell" id="jYy-v5-7G4" customClass="MessageBubbleCell">
-                                        <rect key="frame" x="0.0" y="64" width="320" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="Vvc-Mi-82g" kind="embed" identifier="embedMessageViewSegue" id="79n-ac-1LY"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Eex-h0-oSh" secondAttribute="trailing" id="8aJ-u0-RNV"/>
-                            <constraint firstItem="Eex-h0-oSh" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="QAN-BP-tad"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Eex-h0-oSh" secondAttribute="bottom" id="dxQ-QP-ED3"/>
-                            <constraint firstItem="Eex-h0-oSh" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="mu7-Tl-5go"/>
+                            <constraint firstAttribute="trailing" secondItem="Y0C-9P-vFv" secondAttribute="trailing" id="BZN-tD-xxa"/>
+                            <constraint firstItem="Y0C-9P-vFv" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="RfM-As-vRC"/>
+                            <constraint firstItem="Y0C-9P-vFv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="lHs-nH-5IU"/>
+                            <constraint firstAttribute="bottom" secondItem="Y0C-9P-vFv" secondAttribute="bottom" id="xQu-B9-KI7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Messages" id="cyX-EX-pfd">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="bg0-3y-cfE">
                             <connections>
-                                <action selector="addMessage:" destination="vXZ-lx-hvc" id="APe-Xx-i5w"/>
+                                <action selector="addRandomMessage:" destination="vXZ-lx-hvc" id="tFZ-Nf-faK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="collectionView" destination="Eex-h0-oSh" id="a8O-US-eBJ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-96" y="-245"/>
+        </scene>
+        <!--Message View Controller-->
+        <scene sceneID="wsH-JC-0hj">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Vvc-Mi-82g" customClass="MessageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fbi-tt-phC"/>
+                        <viewControllerLayoutGuide type="bottom" id="G7a-qQ-Efk"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="O8X-C2-Phi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TmK-K2-Tet" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="-245"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

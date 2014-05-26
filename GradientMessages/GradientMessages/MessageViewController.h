@@ -8,6 +8,24 @@
 
 @import UIKit;
 
+#import "Message.h"
+
+@protocol MessageViewControllerDelegate;
+
 @interface MessageViewController : UIViewController
+
+@property (nonatomic, weak) id<MessageViewControllerDelegate> delegate;
+@property (nonatomic, strong) id<UILayoutSupport> maxKeyboardLayoutGuide;
+
+- (void)reloadData;
+
+@end
+
+@protocol MessageViewControllerDelegate <NSObject>
+
+- (NSUInteger)messageCount;
+- (Message *)messageAtIndexPath:(NSIndexPath *)indexPath;
+
+- (void)messageViewController:(MessageViewController *)messageViewController didSendMessageText:(NSString *)messageText;
 
 @end

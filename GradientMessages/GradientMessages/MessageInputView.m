@@ -8,17 +8,17 @@
 
 #import "MessageInputView.h"
 
-@interface MessageInputView ()
+@interface MessageInputView () <UITextViewDelegate>
 
-@property (nonatomic, strong) UIToolbar *backgroundToolbar;
 @property (nonatomic, strong) UITextView *messageInputTextView;
 @property (nonatomic, strong) UIButton *sendButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topPaddingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomPaddingConstraint;
 @property (nonatomic, strong) MessageInputViewModel *viewModel;
 
+- (void)sendButtonPressed:(id)sender;
+
 - (void)commonInit;
-- (void)addBackgroundToolbar;
 - (void)addMessageInputTextView;
 - (void)addSendButton;
 
@@ -51,7 +51,8 @@
 
 - (CGSize)intrinsicContentSize
 {
-	CGFloat height = self.inputTextView.contentSize.height;
+	[self.messageInputTextView layoutIfNeeded];
+	CGFloat height = MAX(28, self.messageInputTextView.contentSize.height + self.messageInputTextView.textContainerInset.top + self.messageInputTextView.textContainerInset.bottom);
 	if (self.viewModel) {
 		height += self.viewModel.layoutSpec.messageInputTextViewPadding.top + self.viewModel.layoutSpec.messageInputTextViewPadding.bottom;
 	}
@@ -73,46 +74,56 @@
 	self.sendButton.titleLabel.font = viewModel.sendButtonFont;
 
 	NSDictionary *views = @{
-		self.viewModel.backgroundToolbarName : self.backgroundToolbar,
-		self.viewModel.inputTextViewName : self.inputTextView,
+		self.viewModel.inputTextViewName : self.messageInputTextView,
 		self.viewModel.sendButtonName : self.sendButton,
 	};
 	
 	for (NSString *layoutConstraint in self.viewModel.layoutConstraints) {
 		[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:layoutConstraint options:0 metrics:nil views:views]];
 	}
-	
+
 	[self setNeedsUpdateConstraints];
 }
 
 - (void)scrollToCaret
 {
-	CGRect rect = [self.inputTextView caretRectForPosition:self.inputTextView.selectedTextRange.start];
-	rect.size.height += self.inputTextView.textContainerInset.bottom;
-	[self.inputTextView scrollRectToVisible:rect animated:NO];
+	[UIView animateWithDuration:0.1f animations:^{
+		CGRect rect = [self.messageInputTextView caretRectForPosition:self.messageInputTextView.selectedTextRange.start];
+		rect.size.height += self.messageInputTextView.textContainerInset.bottom;
+		[self.messageInputTextView scrollRectToVisible:rect animated:NO];
+		[self invalidateIntrinsicContentSize];
+		[self layoutIfNeeded];
+	}];
+}
+
+- (void)clearInputText
+{
+	self.messageInputTextView.text = @"";
+	if ([self.delegate respondsToSelector:@selector(messageInputViewDidChangeText:)]) {
+		[self.delegate messageInputViewDidChangeText:self];
+	}
+}
+
+- (void)sendButtonPressed:(id)sender
+{
+	if ([self.delegate respondsToSelector:@selector(messageInputView:didSendMessageText:)]) {
+		[self.delegate messageInputView:self didSendMessageText:self.messageInputTextView.text];
+	}
 }
 
 - (void)commonInit
 {
 	self.translatesAutoresizingMaskIntoConstraints = NO;
 	
-	[self addBackgroundToolbar];
 	[self addMessageInputTextView];
 	[self addSendButton];
-}
-
-- (void)addBackgroundToolbar
-{
-	self.backgroundToolbar = [[UIToolbar alloc] init];
-	self.backgroundToolbar.translatesAutoresizingMaskIntoConstraints = NO;
-	self.backgroundToolbar.barStyle = UIBarStyleDefault;
-	[self addSubview:self.backgroundToolbar];
 }
 
 - (void)addMessageInputTextView
 {
 	self.messageInputTextView = [[UITextView alloc] init];
 	self.messageInputTextView.translatesAutoresizingMaskIntoConstraints = NO;
+	self.messageInputTextView.delegate = self;
 	[self addSubview:self.messageInputTextView];
 }
 
@@ -122,7 +133,17 @@
 	self.sendButton.translatesAutoresizingMaskIntoConstraints = NO;
 	self.sendButton.userInteractionEnabled = YES;
 	[self.sendButton setTitle:@"Send" forState:UIControlStateNormal];
+	[self.sendButton addTarget:self action:@selector(sendButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 	[self addSubview:self.sendButton];
+}
+
+#pragma mark UITextViewDelegate
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+	if ([self.delegate respondsToSelector:@selector(messageInputViewDidChangeText:)]) {
+		[self.delegate messageInputViewDidChangeText:self];
+	}
 }
 
 @end

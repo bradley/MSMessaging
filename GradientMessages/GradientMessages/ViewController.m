@@ -7,18 +7,16 @@
 //
 
 #import "ViewController.h"
-#import "MessageBubbleController.h"
-#import "MessageBubbleCell.h"
+#import "MessageViewController.h"
 #import "Message.h"
 
-@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ViewController () <MessageViewControllerDelegate>
 
-@property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, strong) MessageBubbleController *messageBubbleController;
 @property (nonatomic, strong) NSMutableArray *messages;
+@property (nonatomic, strong) MessageViewController *messageViewController;
 @property (nonatomic, strong) NSArray *sampleMessageStrings;
 
-- (IBAction)addMessage:(id)sender;
+- (IBAction)addRandomMessage:(id)sender;
 
 - (Message *)createRandomMessage;
 
@@ -30,22 +28,34 @@
 {
 	[super viewDidLoad];
 	
-	self.messageBubbleController = [[MessageBubbleController alloc] init];
-	self.messageBubbleController.collectionViewSize = self.collectionView.bounds.size;
 	self.messages = [NSMutableArray array];
 	
 	NSString *sampleMessageStringsPath = [[NSBundle mainBundle] pathForResource:@"Messages" ofType:@"plist"];
 	self.sampleMessageStrings = [NSArray arrayWithContentsOfFile:sampleMessageStringsPath];
-	
-	self.collectionView.delegate = self;
-	self.collectionView.dataSource = self;
 }
 
-- (IBAction)addMessage:(id)sender
+- (void)viewWillLayoutSubviews
 {
-	Message *message = [self createRandomMessage];
-	[self.messages addObject:message];
-	[self.collectionView reloadData];
+	self.messageViewController.maxKeyboardLayoutGuide = self.topLayoutGuide;
+	[super viewWillLayoutSubviews];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([segue.identifier isEqualToString:@"embedMessageViewSegue"]) {
+		self.messageViewController = segue.destinationViewController;
+		self.messageViewController.delegate = self;
+	}
+	else {
+		return [super prepareForSegue:segue sender:sender];
+	}
+}
+
+- (IBAction)addRandomMessage:(id)sender
+{
+	Message *randomMessage = [self createRandomMessage];
+	[self.messages addObject:randomMessage];
+	[self.messageViewController reloadData];
 }
 
 - (Message *)createRandomMessage
@@ -56,41 +66,23 @@
 	return [[Message alloc] initWithMessageText:randomMessageText isAuthor:randomIsAuthor];
 }
 
-#pragma mark UICollectionViewDataSource
+#pragma mark MessageViewControllerDelegate
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (NSUInteger)messageCount
 {
 	return self.messages.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (Message *)messageAtIndexPath:(NSIndexPath *)indexPath
 {
-	Message *message = (indexPath.row < self.messages.count) ? self.messages[ indexPath.row ] : nil;
-	MessageBubbleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"messageCell" forIndexPath:indexPath];
-	if (message && cell) {
-		UICollectionViewLayoutAttributes *attributes = [collectionView layoutAttributesForItemAtIndexPath:indexPath];
-		MessageBubbleViewModel *viewModel = [self.messageBubbleController viewModelForMessageText:message.messageText isAuthor:message.isAuthor];
-		[cell setViewModel:viewModel];
-		cell.gradientOffset = (-self.collectionView.contentOffset.y + attributes.frame.origin.y);
-	}
-	
-	return cell;
+	return self.messages[ indexPath.row ];
 }
 
-#pragma mark UICollectionViewDelegateFlowLayout
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+- (void)messageViewController:(MessageViewController *)messageViewController didSendMessageText:(NSString *)messageText
 {
-	Message *message = self.messages[ indexPath.row ];
-	MessageBubbleViewModel *viewModel = [self.messageBubbleController viewModelForMessageText:message.messageText isAuthor:message.isAuthor];
-	return [viewModel.layoutSpec cellSize];
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-	for (MessageBubbleCell *cell in self.collectionView.visibleCells) {
-		cell.gradientOffset = (-self.collectionView.contentOffset.y + cell.frame.origin.y);
-	}
+	Message *message = [[Message alloc] initWithMessageText:messageText isAuthor:YES];
+	[self.messages addObject:message];
+	[self.messageViewController reloadData];
 }
 
 @end

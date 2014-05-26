@@ -71,6 +71,8 @@
 
 - (void)commonInit
 {
+	self.layer.masksToBounds = YES;
+	
 	NSDictionary *nullImplicitAnims = @{
 		@"position" : [NSNull null],
 		@"bounds" : [NSNull null],

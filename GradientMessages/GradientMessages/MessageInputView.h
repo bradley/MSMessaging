@@ -10,13 +10,23 @@
 
 #import "MessageInputViewModel.h"
 
-@interface MessageInputView : UIView
+@class MessageInputView;
 
-@property (nonatomic, strong, readonly) UITextView *inputTextView;
-@property (nonatomic, strong, readonly) UIButton *sendButton;
+@protocol MessageInputViewDelegate <UIToolbarDelegate>
+
+- (void)messageInputViewDidChangeText:(MessageInputView *)messageInputView;
+- (void)messageInputView:(MessageInputView *)messageInputView didSendMessageText:(NSString *)messageText;
+
+@end
+
+@interface MessageInputView : UIToolbar
+
+@property (nonatomic, weak) id<MessageInputViewDelegate> delegate;
 
 - (void)setViewModel:(MessageInputViewModel *)viewModel;
 
 - (void)scrollToCaret;
+- (void)clearInputText;
 
 @end
+
