@@ -42,12 +42,13 @@
 	
 	self.collectionViewLayout = [[UICollectionViewFlowLayout alloc] init];
 	self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.collectionViewLayout];
-	[self.collectionView registerClass:[MessageBubbleCell class] forCellWithReuseIdentifier:@"messageCell"];
 	self.collectionView.backgroundColor = [UIColor whiteColor];
+	self.collectionView.alwaysBounceVertical = YES;
 	self.collectionView.delegate = self;
 	self.collectionView.dataSource = self;
 	[self.view addSubview:self.collectionView];
-	
+	[self.collectionView registerClass:[MessageBubbleCell class] forCellWithReuseIdentifier:@"messageCell"];
+
 	self.messageInputView = [[MessageInputView alloc] init];
 	self.messageInputView.delegate = self;
 	[self.view addSubview:self.messageInputView];
@@ -63,20 +64,6 @@
 	UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self.messageInputView action:@selector(endEditing:)];
 	gestureRecognizer.cancelsTouchesInView = NO;
 	[self.collectionView addGestureRecognizer:gestureRecognizer];
-}
-
-- (void)viewWillLayoutSubviews
-{
-	[super viewWillLayoutSubviews];
-/*
-	UIEdgeInsets contentInset = self.collectionView.contentInset;
-	contentInset.bottom += 46.f;
-	self.collectionView.contentInset = contentInset;
-	
-	UIEdgeInsets scrollIndicatorInsets = self.collectionView.scrollIndicatorInsets;
-	scrollIndicatorInsets.bottom += 46.f;
-	self.collectionView.scrollIndicatorInsets = scrollIndicatorInsets;
-	*/
 }
 
 - (void)setMaxKeyboardLayoutGuide:(id<UILayoutSupport>)maxKeyboardLayoutGuide
@@ -96,6 +83,16 @@
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[collectionView]|" options:0 metrics:nil views:views]];
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[collectionView]|" options:0 metrics:nil views:views]];
 	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[messageInputView]|" options:0 metrics:nil views:views]];
+
+	UIEdgeInsets contentInset = self.collectionView.contentInset;
+	contentInset.top += _maxKeyboardLayoutGuide.length;
+	contentInset.bottom += self.messageInputView.intrinsicContentSize.height;
+	self.collectionView.contentInset = contentInset;
+	
+	UIEdgeInsets scrollIndicatorInsets = self.collectionView.scrollIndicatorInsets;
+	scrollIndicatorInsets.top += _maxKeyboardLayoutGuide.length;
+	scrollIndicatorInsets.bottom += self.messageInputView.intrinsicContentSize.height;
+	self.collectionView.scrollIndicatorInsets = scrollIndicatorInsets;
 }
 
 - (void)reloadData
