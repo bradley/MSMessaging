@@ -44,6 +44,9 @@
 {
 	_viewModel = viewModel;
 	
+	[CATransaction begin];
+	[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
+	
 	if (viewModel.messageBackgroundColor) {
 		[self.gradientLayer removeFromSuperlayer];
 		self.bubbleMaskLayer.backgroundColor = viewModel.messageBackgroundColor.CGColor;
@@ -61,33 +64,31 @@
 	self.gradientLayer.frame = [viewModel.layoutSpec gradientFrame];
 	self.bubbleMaskLayer.frame = [viewModel.layoutSpec bubbleMaskFrame];
 	self.bubbleMaskLayer.transform = viewModel.bubbleMaskTransform;
+
+	[CATransaction commit];
 }
 
 - (void)setGradientOffset:(CGFloat)gradientOffset
 {
 	_gradientOffset = gradientOffset;
+	
+	[CATransaction begin];
+	[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
+
 	self.gradientLayer.position = CGPointMake(self.gradientLayer.position.x, -gradientOffset);
+	[CATransaction commit];
 }
 
 - (void)commonInit
 {
 	self.layer.masksToBounds = YES;
-	
-	NSDictionary *nullImplicitAnims = @{
-		@"position" : [NSNull null],
-		@"bounds" : [NSNull null],
-		@"backgroundColor" : [NSNull null],
-		@"transform" : [NSNull null],
-	};
-	
+		
 	self.gradientLayer = [CALayer layer];
-	self.gradientLayer.actions = nullImplicitAnims;
 	self.gradientLayer.anchorPoint = CGPointZero;
 	self.gradientLayer.contentsScale = [UIScreen mainScreen].scale;
 	self.gradientLayer.contents = (id)[UIImage imageNamed:@"BlueGradient"].CGImage;
 	
 	self.bubbleMaskLayer = [CALayer layer];
-	self.bubbleMaskLayer.actions = nullImplicitAnims;
 	self.bubbleMaskLayer.contentsScale = [UIScreen mainScreen].scale;
 	self.bubbleMaskLayer.contents = (id)[UIImage imageNamed:@"MessageBubble"].CGImage;
 	[self.layer addSublayer:self.bubbleMaskLayer];

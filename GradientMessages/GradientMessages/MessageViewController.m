@@ -123,7 +123,7 @@
 		self.keyboardConstraint.constant = keyboardRect.size.height;
 		
 		[self.view layoutIfNeeded];
-		
+
 		UIEdgeInsets contentInset = self.collectionView.contentInset;
 		contentInset.bottom += keyboardRect.size.height;
 		self.collectionView.contentInset = contentInset;
@@ -148,9 +148,9 @@
 		
 	void (^animations)(void) = ^{
 		self.keyboardConstraint.constant = 0.f;
-		
+				
 		[self.view layoutIfNeeded];
-		
+
 		UIEdgeInsets contentInset = self.collectionView.contentInset;
 		contentInset.bottom -= keyboardRect.size.height;
 		self.collectionView.contentInset = contentInset;
