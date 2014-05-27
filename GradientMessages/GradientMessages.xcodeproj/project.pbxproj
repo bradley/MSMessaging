@@ -25,7 +25,6 @@
 		D841A99D192C727800835BC0 /* MessageBubbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A99C192C727800835BC0 /* MessageBubbleCell.m */; };
 		D841A9A0192C73DB00835BC0 /* MessageBubbleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A99F192C73DB00835BC0 /* MessageBubbleViewModel.m */; };
 		D841A9A3192D955700835BC0 /* MessageBubbleLayoutSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A9A2192D955700835BC0 /* MessageBubbleLayoutSpec.m */; };
-		D841A9A7192DA5F200835BC0 /* MessageBubbleController.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A9A6192DA5F200835BC0 /* MessageBubbleController.m */; };
 		D841A9AB192DACC500835BC0 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = D841A9AA192DACC500835BC0 /* Message.m */; };
 		D85F458C1930699400FDA5CE /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D85F458B1930699400FDA5CE /* MessageViewController.m */; };
 		D8B465F4192ED22900DE8766 /* MessageInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B465F3192ED22900DE8766 /* MessageInputView.m */; };
@@ -70,8 +69,6 @@
 		D841A99F192C73DB00835BC0 /* MessageBubbleViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBubbleViewModel.m; sourceTree = "<group>"; };
 		D841A9A1192D955700835BC0 /* MessageBubbleLayoutSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBubbleLayoutSpec.h; sourceTree = "<group>"; };
 		D841A9A2192D955700835BC0 /* MessageBubbleLayoutSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBubbleLayoutSpec.m; sourceTree = "<group>"; };
-		D841A9A5192DA5F200835BC0 /* MessageBubbleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBubbleController.h; sourceTree = "<group>"; };
-		D841A9A6192DA5F200835BC0 /* MessageBubbleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBubbleController.m; sourceTree = "<group>"; };
 		D841A9A9192DACC500835BC0 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		D841A9AA192DACC500835BC0 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		D85F458A1930699400FDA5CE /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
@@ -203,8 +200,6 @@
 			children = (
 				D841A973192C6CD900835BC0 /* AppDelegate.h */,
 				D841A974192C6CD900835BC0 /* AppDelegate.m */,
-				D841A9A5192DA5F200835BC0 /* MessageBubbleController.h */,
-				D841A9A6192DA5F200835BC0 /* MessageBubbleController.m */,
 				D85F458A1930699400FDA5CE /* MessageViewController.h */,
 				D85F458B1930699400FDA5CE /* MessageViewController.m */,
 				D841A979192C6CD900835BC0 /* ViewController.h */,
@@ -329,7 +324,6 @@
 				D8B465F7192ED39600DE8766 /* MessageInputLayoutSpec.m in Sources */,
 				D841A97B192C6CD900835BC0 /* ViewController.m in Sources */,
 				D85F458C1930699400FDA5CE /* MessageViewController.m in Sources */,
-				D841A9A7192DA5F200835BC0 /* MessageBubbleController.m in Sources */,
 				D841A975192C6CD900835BC0 /* AppDelegate.m in Sources */,
 				D841A9A0192C73DB00835BC0 /* MessageBubbleViewModel.m in Sources */,
 				D841A971192C6CD900835BC0 /* main.m in Sources */,

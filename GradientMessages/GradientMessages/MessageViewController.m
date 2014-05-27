@@ -7,9 +7,6 @@
 //
 
 #import "MessageViewController.h"
-#import "MessageBubbleController.h"
-#import "MessageInputView.h"
-#import "MessageBubbleCell.h"
 
 @interface MessageViewController () <MessageInputViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -17,7 +14,6 @@
 @property (nonatomic, strong) NSLayoutConstraint *keyboardConstraint;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) MessageInputView *messageInputView;
-@property (nonatomic, strong) MessageBubbleController *messageBubbleController;
 
 - (void)sendPressed:(id)sender;
 
@@ -40,9 +36,6 @@
 
 	self.view.translatesAutoresizingMaskIntoConstraints = NO;
 	
-	self.messageBubbleController = [[MessageBubbleController alloc] init];
-	self.messageBubbleController.collectionViewSize = self.view.bounds.size;
-	
 	self.collectionViewLayout = [[UICollectionViewFlowLayout alloc] init];
 	self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.collectionViewLayout];
 	[self.collectionView registerClass:[MessageBubbleCell class] forCellWithReuseIdentifier:@"messageCell"];
@@ -53,7 +46,7 @@
 	[self.view addSubview:self.collectionView];
 
 	self.messageInputView = [[MessageInputView alloc] init];
-	self.messageInputView.viewModel = [self.messageBubbleController viewModel];
+	self.messageInputView.viewModel = [self.delegate messageInputViewModel];
 	self.messageInputView.delegate = self;
 	[self.view addSubview:self.messageInputView];
 		
@@ -180,9 +173,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	Message *message = [self.delegate messageAtIndexPath:indexPath];
-	MessageBubbleViewModel *viewModel = [self.messageBubbleController viewModelForMessageText:message.messageText isAuthor:message.isAuthor];
-	return [viewModel.layoutSpec cellSize];
+	return [self.delegate sizeForItemAtIndexPath:indexPath];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -201,11 +192,10 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	Message *message = [self.delegate messageAtIndexPath:indexPath];
 	MessageBubbleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"messageCell" forIndexPath:indexPath];
-	if (message && cell) {
+	if (cell) {
 		UICollectionViewLayoutAttributes *attributes = [collectionView layoutAttributesForItemAtIndexPath:indexPath];
-		MessageBubbleViewModel *viewModel = [self.messageBubbleController viewModelForMessageText:message.messageText isAuthor:message.isAuthor];
+		MessageBubbleViewModel *viewModel = [self.delegate messageBubbleViewModelAtIndexPath:indexPath];
 		[cell setViewModel:viewModel];
 		cell.gradientOffset = (-self.collectionView.contentOffset.y + attributes.frame.origin.y);
 	}

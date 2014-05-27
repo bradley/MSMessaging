@@ -9,6 +9,8 @@
 @import UIKit;
 
 #import "Message.h"
+#import "MessageInputView.h"
+#import "MessageBubbleCell.h"
 
 @protocol MessageViewControllerDelegate;
 
@@ -23,9 +25,10 @@
 
 @protocol MessageViewControllerDelegate <NSObject>
 
+- (MessageInputViewModel *)messageInputViewModel;
 - (NSUInteger)messageCount;
-- (Message *)messageAtIndexPath:(NSIndexPath *)indexPath;
-
+- (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
+- (MessageBubbleViewModel *)messageBubbleViewModelAtIndexPath:(NSIndexPath *)indexPath;
 - (void)messageViewController:(MessageViewController *)messageViewController didSendMessageText:(NSString *)messageText;
 
 @end
