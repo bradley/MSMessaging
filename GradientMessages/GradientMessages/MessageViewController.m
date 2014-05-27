@@ -13,17 +13,17 @@
 
 @interface MessageViewController () <MessageInputViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *collectionViewLayout;
-@property (nonatomic, strong) MessageInputView *messageInputView;
 @property (nonatomic, strong) NSLayoutConstraint *keyboardConstraint;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) MessageInputView *messageInputView;
 @property (nonatomic, strong) MessageBubbleController *messageBubbleController;
+
+- (void)sendPressed:(id)sender;
 
 - (void)closeKeyboard:(id)sender;
 - (void)keyboardWillShow:(NSNotification *)notification;
 - (void)keyboardWillHide:(NSNotification *)notification;
-
-- (void)sendPressed:(id)sender;
 
 @end
 
@@ -40,23 +40,22 @@
 
 	self.view.translatesAutoresizingMaskIntoConstraints = NO;
 	
+	self.messageBubbleController = [[MessageBubbleController alloc] init];
+	self.messageBubbleController.collectionViewSize = self.view.bounds.size;
+	
 	self.collectionViewLayout = [[UICollectionViewFlowLayout alloc] init];
 	self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.collectionViewLayout];
+	[self.collectionView registerClass:[MessageBubbleCell class] forCellWithReuseIdentifier:@"messageCell"];
 	self.collectionView.backgroundColor = [UIColor whiteColor];
 	self.collectionView.alwaysBounceVertical = YES;
 	self.collectionView.delegate = self;
 	self.collectionView.dataSource = self;
 	[self.view addSubview:self.collectionView];
-	[self.collectionView registerClass:[MessageBubbleCell class] forCellWithReuseIdentifier:@"messageCell"];
 
 	self.messageInputView = [[MessageInputView alloc] init];
-	self.messageInputView.delegate = self;
-	[self.view addSubview:self.messageInputView];
-
-	self.messageBubbleController = [[MessageBubbleController alloc] init];
-	self.messageBubbleController.collectionViewSize = self.view.bounds.size;
 	self.messageInputView.viewModel = [self.messageBubbleController viewModel];
 	self.messageInputView.delegate = self;
+	[self.view addSubview:self.messageInputView];
 		
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -100,6 +99,11 @@
 	[self.collectionView reloadData];
 }
 
+- (void)sendPressed:(id)sender
+{
+	[self.messageInputView clearInputText];
+}
+
 - (void)closeKeyboard:(id)sender
 {
 	[self.messageInputView endEditing:YES];
@@ -115,14 +119,9 @@
 	[[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
 	[[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardRect];
 	
-	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDuration:animationDuration];
-	[UIView setAnimationCurve:animationCurve];
-	[UIView setAnimationBeginsFromCurrentState:YES];
-	
-	{
+	void (^animations)(void) = ^{
 		self.keyboardConstraint.constant = keyboardRect.size.height;
-
+		
 		[self.view layoutIfNeeded];
 		
 		UIEdgeInsets contentInset = self.collectionView.contentInset;
@@ -132,9 +131,9 @@
 		UIEdgeInsets scrollIndicatorInsets = self.collectionView.scrollIndicatorInsets;
 		scrollIndicatorInsets.bottom += keyboardRect.size.height;
 		self.collectionView.scrollIndicatorInsets = scrollIndicatorInsets;
-	}
+	};
 	
-	[UIView commitAnimations];
+	[UIView animateWithDuration:animationDuration delay:0.f options:(animationCurve << 16) animations:animations completion:nil];
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification
@@ -147,14 +146,9 @@
 	[[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
 	[[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardRect];
 		
-	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDuration:animationDuration];
-	[UIView setAnimationCurve:animationCurve];
-	[UIView setAnimationBeginsFromCurrentState:YES];
-	
-	{
+	void (^animations)(void) = ^{
 		self.keyboardConstraint.constant = 0.f;
-
+		
 		[self.view layoutIfNeeded];
 		
 		UIEdgeInsets contentInset = self.collectionView.contentInset;
@@ -164,14 +158,9 @@
 		UIEdgeInsets scrollIndicatorInsets = self.collectionView.scrollIndicatorInsets;
 		scrollIndicatorInsets.bottom -= keyboardRect.size.height;
 		self.collectionView.scrollIndicatorInsets = scrollIndicatorInsets;
-	}
-		
-	[UIView commitAnimations];
-}
-
-- (void)sendPressed:(id)sender
-{
-	[self.messageInputView clearInputText];
+	};
+	
+	[UIView animateWithDuration:animationDuration delay:0.f options:(animationCurve << 16) animations:animations completion:nil];
 }
 
 #pragma mark MessageInputViewDelegate
