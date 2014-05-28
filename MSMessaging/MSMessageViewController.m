@@ -124,6 +124,12 @@
 		UIEdgeInsets scrollIndicatorInsets = self.collectionView.scrollIndicatorInsets;
 		scrollIndicatorInsets.bottom += keyboardRect.size.height;
 		self.collectionView.scrollIndicatorInsets = scrollIndicatorInsets;
+		
+		NSInteger numItems = [self.collectionView numberOfItemsInSection:0];
+		if (numItems) {
+			NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:(numItems - 1) inSection:0];
+			[self.collectionView scrollToItemAtIndexPath:lastIndexPath atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+		}
 	};
 	
 	[UIView animateWithDuration:animationDuration delay:0.f options:(animationCurve << 16) animations:animations completion:nil];
