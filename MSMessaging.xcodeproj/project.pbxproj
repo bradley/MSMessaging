@@ -108,6 +108,8 @@
 		D81E7C121935774300A7ED64 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D81E7C1F193579BD00A7ED64 /* MSMessageInputToolbar.h */,
+				D81E7C20193579BD00A7ED64 /* MSMessageInputToolbar.m */,
 				D81E7C13193577CA00A7ED64 /* MSMessageBubbleCell.h */,
 				D81E7C14193577CA00A7ED64 /* MSMessageBubbleCell.m */,
 			);
@@ -117,6 +119,10 @@
 		D81E7C161935783100A7ED64 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D81E7C1D193579BD00A7ED64 /* MSMessageInputLayoutSpec.h */,
+				D81E7C1E193579BD00A7ED64 /* MSMessageInputLayoutSpec.m */,
+				D81E7C21193579BD00A7ED64 /* MSMessageInputViewModel.h */,
+				D81E7C22193579BD00A7ED64 /* MSMessageInputViewModel.m */,
 				D81E7C17193578BC00A7ED64 /* MSMessageBubbleLayoutSpec.h */,
 				D81E7C18193578BC00A7ED64 /* MSMessageBubbleLayoutSpec.m */,
 				D81E7C19193578BC00A7ED64 /* MSMessageBubbleViewModel.h */,
@@ -128,6 +134,8 @@
 		D81E7C29193579DC00A7ED64 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D81E7C23193579BD00A7ED64 /* MSMessageViewController.h */,
+				D81E7C24193579BD00A7ED64 /* MSMessageViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -139,6 +147,14 @@
 				D81E7C2B19357C0D00A7ED64 /* Messages.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D81E7C2D19357F6700A7ED64 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D8DBD7FB1935752100B612DB /* Main.storyboard */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		D8DBD7DD1935752000B612DB = {
@@ -176,18 +192,9 @@
 			isa = PBXGroup;
 			children = (
 				D81E7C29193579DC00A7ED64 /* Controller */,
-				D81E7C1D193579BD00A7ED64 /* MSMessageInputLayoutSpec.h */,
-				D81E7C1E193579BD00A7ED64 /* MSMessageInputLayoutSpec.m */,
-				D81E7C1F193579BD00A7ED64 /* MSMessageInputToolbar.h */,
-				D81E7C20193579BD00A7ED64 /* MSMessageInputToolbar.m */,
-				D81E7C21193579BD00A7ED64 /* MSMessageInputViewModel.h */,
-				D81E7C22193579BD00A7ED64 /* MSMessageInputViewModel.m */,
-				D81E7C23193579BD00A7ED64 /* MSMessageViewController.h */,
-				D81E7C24193579BD00A7ED64 /* MSMessageViewController.m */,
 				D81E7C161935783100A7ED64 /* Model */,
-				D81E7C121935774300A7ED64 /* View */,
-				D8DBD8011935752100B612DB /* Images.xcassets */,
 				D8DBD7F01935752000B612DB /* Supporting Files */,
+				D81E7C121935774300A7ED64 /* View */,
 			);
 			path = MSMessaging;
 			sourceTree = "<group>";
@@ -195,8 +202,9 @@
 		D8DBD7F01935752000B612DB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D8DBD7F11935752000B612DB /* MSMessaging-Info.plist */,
+				D8DBD8011935752100B612DB /* Images.xcassets */,
 				D8DBD7F21935752000B612DB /* InfoPlist.strings */,
+				D8DBD7F11935752000B612DB /* MSMessaging-Info.plist */,
 				D8DBD7F71935752100B612DB /* MSMessaging-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -223,10 +231,10 @@
 		D8DBD8271935767100B612DB /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				D81E7C2A19357BF200A7ED64 /* Supporting Files */,
 				D8DBD8281935768100B612DB /* Controller */,
 				D8DBD82C193576B700B612DB /* Model */,
-				D8DBD7FB1935752100B612DB /* Main.storyboard */,
+				D81E7C2A19357BF200A7ED64 /* Supporting Files */,
+				D81E7C2D19357F6700A7ED64 /* View */,
 			);
 			name = Example;
 			sourceTree = "<group>";
