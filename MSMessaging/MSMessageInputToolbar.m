@@ -109,6 +109,9 @@
 	if ([self.delegate respondsToSelector:@selector(messageInputToolbar:didSendMessageText:)]) {
 		[self.delegate messageInputToolbar:self didSendMessageText:self.messageInputTextView.text];
 	}
+
+	self.messageInputTextView.text = @"";
+	[self.messageInputTextView endEditing:YES];
 }
 
 - (void)commonInit
