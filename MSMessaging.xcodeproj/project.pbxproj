@@ -7,20 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D81E7C111935771700A7ED64 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E7C101935771700A7ED64 /* main.m */; };
+		D81E7C15193577CA00A7ED64 /* MSMessageBubbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E7C14193577CA00A7ED64 /* MSMessageBubbleCell.m */; };
+		D81E7C1B193578BC00A7ED64 /* MSMessageBubbleLayoutSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E7C18193578BC00A7ED64 /* MSMessageBubbleLayoutSpec.m */; };
+		D81E7C1C193578BC00A7ED64 /* MSMessageBubbleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E7C1A193578BC00A7ED64 /* MSMessageBubbleViewModel.m */; };
+		D81E7C25193579BD00A7ED64 /* MSMessageInputLayoutSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E7C1E193579BD00A7ED64 /* MSMessageInputLayoutSpec.m */; };
+		D81E7C26193579BD00A7ED64 /* MSMessageInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E7C20193579BD00A7ED64 /* MSMessageInputToolbar.m */; };
+		D81E7C27193579BD00A7ED64 /* MSMessageInputViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E7C22193579BD00A7ED64 /* MSMessageInputViewModel.m */; };
+		D81E7C28193579BD00A7ED64 /* MSMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E7C24193579BD00A7ED64 /* MSMessageViewController.m */; };
+		D81E7C2C19357C0D00A7ED64 /* Messages.plist in Resources */ = {isa = PBXBuildFile; fileRef = D81E7C2B19357C0D00A7ED64 /* Messages.plist */; };
 		D8DBD7EA1935752000B612DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8DBD7E91935752000B612DB /* Foundation.framework */; };
 		D8DBD7EC1935752000B612DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8DBD7EB1935752000B612DB /* CoreGraphics.framework */; };
 		D8DBD7EE1935752000B612DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8DBD7ED1935752000B612DB /* UIKit.framework */; };
 		D8DBD7F41935752000B612DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8DBD7F21935752000B612DB /* InfoPlist.strings */; };
-		D8DBD7F61935752100B612DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DBD7F51935752100B612DB /* main.m */; };
-		D8DBD7FA1935752100B612DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DBD7F91935752100B612DB /* AppDelegate.m */; };
 		D8DBD7FD1935752100B612DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8DBD7FB1935752100B612DB /* Main.storyboard */; };
-		D8DBD8001935752100B612DB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DBD7FF1935752100B612DB /* ViewController.m */; };
 		D8DBD8021935752100B612DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8DBD8011935752100B612DB /* Images.xcassets */; };
 		D8DBD8091935752100B612DB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8DBD8081935752100B612DB /* XCTest.framework */; };
 		D8DBD80A1935752100B612DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8DBD7E91935752000B612DB /* Foundation.framework */; };
 		D8DBD80B1935752100B612DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8DBD7ED1935752000B612DB /* UIKit.framework */; };
 		D8DBD8131935752100B612DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8DBD8111935752100B612DB /* InfoPlist.strings */; };
 		D8DBD8151935752100B612DB /* MSMessagingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DBD8141935752100B612DB /* MSMessagingTests.m */; };
+		D8DBD8221935757700B612DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DBD81F1935757700B612DB /* AppDelegate.m */; };
+		D8DBD8231935757700B612DB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DBD8211935757700B612DB /* ViewController.m */; };
+		D8DBD82B193576B400B612DB /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DBD82A193576B400B612DB /* Message.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,25 +43,42 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D81E7C101935771700A7ED64 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Example/main.m; sourceTree = "<group>"; };
+		D81E7C13193577CA00A7ED64 /* MSMessageBubbleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSMessageBubbleCell.h; sourceTree = "<group>"; };
+		D81E7C14193577CA00A7ED64 /* MSMessageBubbleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSMessageBubbleCell.m; sourceTree = "<group>"; };
+		D81E7C17193578BC00A7ED64 /* MSMessageBubbleLayoutSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSMessageBubbleLayoutSpec.h; sourceTree = "<group>"; };
+		D81E7C18193578BC00A7ED64 /* MSMessageBubbleLayoutSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSMessageBubbleLayoutSpec.m; sourceTree = "<group>"; };
+		D81E7C19193578BC00A7ED64 /* MSMessageBubbleViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSMessageBubbleViewModel.h; sourceTree = "<group>"; };
+		D81E7C1A193578BC00A7ED64 /* MSMessageBubbleViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSMessageBubbleViewModel.m; sourceTree = "<group>"; };
+		D81E7C1D193579BD00A7ED64 /* MSMessageInputLayoutSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSMessageInputLayoutSpec.h; sourceTree = "<group>"; };
+		D81E7C1E193579BD00A7ED64 /* MSMessageInputLayoutSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSMessageInputLayoutSpec.m; sourceTree = "<group>"; };
+		D81E7C1F193579BD00A7ED64 /* MSMessageInputToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSMessageInputToolbar.h; sourceTree = "<group>"; };
+		D81E7C20193579BD00A7ED64 /* MSMessageInputToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSMessageInputToolbar.m; sourceTree = "<group>"; };
+		D81E7C21193579BD00A7ED64 /* MSMessageInputViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSMessageInputViewModel.h; sourceTree = "<group>"; };
+		D81E7C22193579BD00A7ED64 /* MSMessageInputViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSMessageInputViewModel.m; sourceTree = "<group>"; };
+		D81E7C23193579BD00A7ED64 /* MSMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSMessageViewController.h; sourceTree = "<group>"; };
+		D81E7C24193579BD00A7ED64 /* MSMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSMessageViewController.m; sourceTree = "<group>"; };
+		D81E7C2B19357C0D00A7ED64 /* Messages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Messages.plist; path = Example/Messages.plist; sourceTree = "<group>"; };
 		D8DBD7E61935752000B612DB /* MSMessaging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSMessaging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8DBD7E91935752000B612DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D8DBD7EB1935752000B612DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D8DBD7ED1935752000B612DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D8DBD7F11935752000B612DB /* MSMessaging-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MSMessaging-Info.plist"; sourceTree = "<group>"; };
 		D8DBD7F31935752000B612DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D8DBD7F51935752100B612DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D8DBD7F71935752100B612DB /* MSMessaging-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSMessaging-Prefix.pch"; sourceTree = "<group>"; };
-		D8DBD7F81935752100B612DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		D8DBD7F91935752100B612DB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D8DBD7FC1935752100B612DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D8DBD7FE1935752100B612DB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D8DBD7FF1935752100B612DB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D8DBD8011935752100B612DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D8DBD8071935752100B612DB /* MSMessagingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MSMessagingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8DBD8081935752100B612DB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D8DBD8101935752100B612DB /* MSMessagingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MSMessagingTests-Info.plist"; sourceTree = "<group>"; };
 		D8DBD8121935752100B612DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D8DBD8141935752100B612DB /* MSMessagingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSMessagingTests.m; sourceTree = "<group>"; };
+		D8DBD81E1935757700B612DB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Example/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		D8DBD81F1935757700B612DB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Example/AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		D8DBD8201935757700B612DB /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = Example/ViewController.h; sourceTree = SOURCE_ROOT; };
+		D8DBD8211935757700B612DB /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = Example/ViewController.m; sourceTree = SOURCE_ROOT; };
+		D8DBD829193576B400B612DB /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Message.h; path = Example/Message.h; sourceTree = "<group>"; };
+		D8DBD82A193576B400B612DB /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Message.m; path = Example/Message.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +105,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D81E7C121935774300A7ED64 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D81E7C13193577CA00A7ED64 /* MSMessageBubbleCell.h */,
+				D81E7C14193577CA00A7ED64 /* MSMessageBubbleCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		D81E7C161935783100A7ED64 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D81E7C17193578BC00A7ED64 /* MSMessageBubbleLayoutSpec.h */,
+				D81E7C18193578BC00A7ED64 /* MSMessageBubbleLayoutSpec.m */,
+				D81E7C19193578BC00A7ED64 /* MSMessageBubbleViewModel.h */,
+				D81E7C1A193578BC00A7ED64 /* MSMessageBubbleViewModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D81E7C29193579DC00A7ED64 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		D81E7C2A19357BF200A7ED64 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D81E7C101935771700A7ED64 /* main.m */,
+				D81E7C2B19357C0D00A7ED64 /* Messages.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		D8DBD7DD1935752000B612DB = {
 			isa = PBXGroup;
 			children = (
+				D8DBD8271935767100B612DB /* Example */,
 				D8DBD7EF1935752000B612DB /* MSMessaging */,
 				D8DBD80E1935752100B612DB /* MSMessagingTests */,
 				D8DBD7E81935752000B612DB /* Frameworks */,
@@ -112,11 +175,17 @@
 		D8DBD7EF1935752000B612DB /* MSMessaging */ = {
 			isa = PBXGroup;
 			children = (
-				D8DBD7F81935752100B612DB /* AppDelegate.h */,
-				D8DBD7F91935752100B612DB /* AppDelegate.m */,
-				D8DBD7FB1935752100B612DB /* Main.storyboard */,
-				D8DBD7FE1935752100B612DB /* ViewController.h */,
-				D8DBD7FF1935752100B612DB /* ViewController.m */,
+				D81E7C29193579DC00A7ED64 /* Controller */,
+				D81E7C1D193579BD00A7ED64 /* MSMessageInputLayoutSpec.h */,
+				D81E7C1E193579BD00A7ED64 /* MSMessageInputLayoutSpec.m */,
+				D81E7C1F193579BD00A7ED64 /* MSMessageInputToolbar.h */,
+				D81E7C20193579BD00A7ED64 /* MSMessageInputToolbar.m */,
+				D81E7C21193579BD00A7ED64 /* MSMessageInputViewModel.h */,
+				D81E7C22193579BD00A7ED64 /* MSMessageInputViewModel.m */,
+				D81E7C23193579BD00A7ED64 /* MSMessageViewController.h */,
+				D81E7C24193579BD00A7ED64 /* MSMessageViewController.m */,
+				D81E7C161935783100A7ED64 /* Model */,
+				D81E7C121935774300A7ED64 /* View */,
 				D8DBD8011935752100B612DB /* Images.xcassets */,
 				D8DBD7F01935752000B612DB /* Supporting Files */,
 			);
@@ -128,7 +197,6 @@
 			children = (
 				D8DBD7F11935752000B612DB /* MSMessaging-Info.plist */,
 				D8DBD7F21935752000B612DB /* InfoPlist.strings */,
-				D8DBD7F51935752100B612DB /* main.m */,
 				D8DBD7F71935752100B612DB /* MSMessaging-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -150,6 +218,37 @@
 				D8DBD8111935752100B612DB /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D8DBD8271935767100B612DB /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				D81E7C2A19357BF200A7ED64 /* Supporting Files */,
+				D8DBD8281935768100B612DB /* Controller */,
+				D8DBD82C193576B700B612DB /* Model */,
+				D8DBD7FB1935752100B612DB /* Main.storyboard */,
+			);
+			name = Example;
+			sourceTree = "<group>";
+		};
+		D8DBD8281935768100B612DB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D8DBD81E1935757700B612DB /* AppDelegate.h */,
+				D8DBD81F1935757700B612DB /* AppDelegate.m */,
+				D8DBD8201935757700B612DB /* ViewController.h */,
+				D8DBD8211935757700B612DB /* ViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		D8DBD82C193576B700B612DB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D8DBD829193576B400B612DB /* Message.h */,
+				D8DBD82A193576B400B612DB /* Message.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +327,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D81E7C2C19357C0D00A7ED64 /* Messages.plist in Resources */,
 				D8DBD8021935752100B612DB /* Images.xcassets in Resources */,
 				D8DBD7F41935752000B612DB /* InfoPlist.strings in Resources */,
 				D8DBD7FD1935752100B612DB /* Main.storyboard in Resources */,
@@ -249,9 +349,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8DBD8001935752100B612DB /* ViewController.m in Sources */,
-				D8DBD7FA1935752100B612DB /* AppDelegate.m in Sources */,
-				D8DBD7F61935752100B612DB /* main.m in Sources */,
+				D81E7C26193579BD00A7ED64 /* MSMessageInputToolbar.m in Sources */,
+				D81E7C28193579BD00A7ED64 /* MSMessageViewController.m in Sources */,
+				D81E7C1B193578BC00A7ED64 /* MSMessageBubbleLayoutSpec.m in Sources */,
+				D81E7C25193579BD00A7ED64 /* MSMessageInputLayoutSpec.m in Sources */,
+				D81E7C111935771700A7ED64 /* main.m in Sources */,
+				D8DBD8231935757700B612DB /* ViewController.m in Sources */,
+				D81E7C27193579BD00A7ED64 /* MSMessageInputViewModel.m in Sources */,
+				D8DBD82B193576B400B612DB /* Message.m in Sources */,
+				D81E7C15193577CA00A7ED64 /* MSMessageBubbleCell.m in Sources */,
+				D81E7C1C193578BC00A7ED64 /* MSMessageBubbleViewModel.m in Sources */,
+				D8DBD8221935757700B612DB /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +396,7 @@
 				D8DBD7FC1935752100B612DB /* Base */,
 			);
 			name = Main.storyboard;
+			path = MSMessaging;
 			sourceTree = "<group>";
 		};
 		D8DBD8111935752100B612DB /* InfoPlist.strings */ = {
@@ -456,6 +565,7 @@
 				D8DBD81A1935752100B612DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D8DBD81B1935752100B612DB /* Build configuration list for PBXNativeTarget "MSMessagingTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +574,7 @@
 				D8DBD81D1935752100B612DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

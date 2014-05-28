@@ -1,25 +1,83 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5023" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="EpI-b4-sGx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <!--Navigation Controller-->
+        <scene sceneID="5aR-wZ-6Ot">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="EpI-b4-sGx" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="K82-WF-MWk">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="tME-4s-oUA" kind="relationship" relationship="rootViewController" id="GkP-Vc-db5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9KL-Qa-Rau" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-142" y="-1035"/>
+        </scene>
+        <!--View Controller - MSMessaging-->
+        <scene sceneID="4fY-kS-xxS">
+            <objects>
+                <viewController id="tME-4s-oUA" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                        <viewControllerLayoutGuide type="top" id="mlC-HQ-S5l"/>
+                        <viewControllerLayoutGuide type="bottom" id="Aci-bi-epn"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleToFill" id="bXe-OM-MCN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHE-bF-SLZ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="MOL-xf-HQ9" kind="embed" identifier="embedMessageViewSegue" id="NVp-Yo-nyP"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="vHE-bF-SLZ" secondAttribute="trailing" id="JsK-qb-Fv8"/>
+                            <constraint firstItem="vHE-bF-SLZ" firstAttribute="top" secondItem="bXe-OM-MCN" secondAttribute="top" id="MTZ-Bi-ek0"/>
+                            <constraint firstItem="vHE-bF-SLZ" firstAttribute="leading" secondItem="bXe-OM-MCN" secondAttribute="leading" id="cbM-d6-Igk"/>
+                            <constraint firstAttribute="bottom" secondItem="vHE-bF-SLZ" secondAttribute="bottom" id="lpf-9n-AYC"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="MSMessaging" id="Rgj-2v-I1y">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="M1g-3T-PAp">
+                            <connections>
+                                <action selector="addRandomMessage:" destination="tME-4s-oUA" id="iXM-aV-6UV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rKp-Lo-Bi4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="374" y="-1035"/>
+        </scene>
+        <!--Message View Controller-->
+        <scene sceneID="3U4-de-YCf">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="MOL-xf-HQ9" customClass="MSMessageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rE8-y6-Qku"/>
+                        <viewControllerLayoutGuide type="bottom" id="pPl-yt-TyL"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="OSQ-C1-zyy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aei-fU-K6L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="911" y="-1035"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
