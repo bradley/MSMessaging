@@ -42,7 +42,7 @@
 	CGFloat y = self.messageBubbleInsets.top + self.messageLabelInsets.top;
 	
 	if (self.alignMessageLabelRight) {
-		x += self.collectionViewSize.width - x - self.messageLabelSize.width - self.messageLabelInsets.right - self.messageBubbleInsets.right;
+		x = self.collectionViewSize.width - self.messageLabelSize.width - self.messageLabelInsets.right - self.messageBubbleInsets.right;
 	}
 	
 	return CGRectMake(ceil(x), ceil(y), ceil(self.messageLabelSize.width), ceil(self.messageLabelSize.height));
