@@ -36,7 +36,8 @@
 - (instancetype)initWithContainerSize:(CGSize)containerSize messageText:(NSString *)messageText isAuthor:(BOOL)isAuthor
 {
 	self = [super init];
-	if (self) {		
+	if (self) {
+		self.containerSize = containerSize;
 		self.messageLabelText = messageText;
 		self.messageLabelColor = isAuthor ? [UIColor whiteColor] : [UIColor blackColor];
 		self.messageBackgroundColor = isAuthor ? nil : [UIColor colorWithRed:229.f/255.f green:229.f/255.f blue:234.f/255.f alpha:1.f];
