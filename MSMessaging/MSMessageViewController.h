@@ -15,8 +15,11 @@
 
 @interface MSMessageViewController : UIViewController
 
+@property (nonatomic, strong) MSMessageInputViewModel *messageInputViewModel;
 @property (nonatomic, weak) id<MSMessageViewControllerDelegate> delegate;
 @property (nonatomic, strong) id<UILayoutSupport> maxKeyboardLayoutGuide;
+
++ (MSMessageInputViewModel *)defaultMessageInputViewModel;
 
 - (void)reloadData;
 
@@ -24,7 +27,6 @@
 
 @protocol MSMessageViewControllerDelegate <NSObject>
 
-- (MSMessageInputViewModel *)messageInputViewModel;
 - (NSUInteger)messageCount;
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
 - (MSMessageBubbleViewModel *)messageBubbleViewModelAtIndexPath:(NSIndexPath *)indexPath;

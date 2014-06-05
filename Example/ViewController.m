@@ -99,23 +99,6 @@
 
 #pragma mark MessageViewControllerDelegate
 
-- (MSMessageInputViewModel *)messageInputViewModel
-{
-	MSMessageInputViewModel *viewModel = [[MSMessageInputViewModel alloc] init];
-	viewModel.messageTextViewContentInset = UIEdgeInsetsMake(5.f, 3.f, 3.f, 0.f);
-	viewModel.sendButtonContentEdgeInsets = UIEdgeInsetsMake(0.f, 0.f, 2.5f, -2.f);
-	viewModel.contentInset = UIEdgeInsetsMake(8.f, 8.f, 8.f, 8.f);
-	viewModel.messageTextViewCornerRadius = 5.f;
-	viewModel.messageTextViewBorderWidth = 0.5f;
-	viewModel.messageTextViewBackgroundColor = [UIColor colorWithWhite:1 alpha:0.825f];
-	viewModel.messageTextViewBorderColor = [UIColor colorWithWhite:0.5f alpha:0.4f];
-	viewModel.messageTextViewFont = [UIFont systemFontOfSize:16];
-	viewModel.messageTextViewFontColor = [UIColor darkTextColor];
-	viewModel.sendButtonFont = [UIFont boldSystemFontOfSize:17.f];
-		
-	return viewModel;
-}
-
 - (NSUInteger)messageCount
 {
 	return self.messages.count;

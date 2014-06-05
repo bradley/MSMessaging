@@ -25,6 +25,23 @@
 
 @implementation MSMessageViewController
 
++ (MSMessageInputViewModel *)defaultMessageInputViewModel
+{
+	MSMessageInputViewModel *viewModel = [[MSMessageInputViewModel alloc] init];
+	viewModel.messageTextViewContentInset = UIEdgeInsetsMake(5.f, 3.f, 3.f, 0.f);
+	viewModel.sendButtonContentEdgeInsets = UIEdgeInsetsMake(0.f, 0.f, 2.5f, -2.f);
+	viewModel.contentInset = UIEdgeInsetsMake(8.f, 8.f, 8.f, 8.f);
+	viewModel.messageTextViewCornerRadius = 5.f;
+	viewModel.messageTextViewBorderWidth = 0.5f;
+	viewModel.messageTextViewBackgroundColor = [UIColor colorWithWhite:1 alpha:0.825f];
+	viewModel.messageTextViewBorderColor = [UIColor colorWithWhite:0.5f alpha:0.4f];
+	viewModel.messageTextViewFont = [UIFont systemFontOfSize:16];
+	viewModel.messageTextViewFontColor = [UIColor darkTextColor];
+	viewModel.sendButtonFont = [UIFont boldSystemFontOfSize:17.f];
+	
+	return viewModel;
+}
+
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -35,6 +52,9 @@
 	[super viewDidLoad];
 
 	self.view.translatesAutoresizingMaskIntoConstraints = NO;
+	if (!self.messageInputViewModel) {
+		self.messageInputViewModel = [MSMessageViewController defaultMessageInputViewModel];
+	}
 	
 	self.collectionViewLayout = [[UICollectionViewFlowLayout alloc] init];
 	self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.collectionViewLayout];
@@ -47,7 +67,7 @@
 	[self.view addSubview:self.collectionView];
 
 	self.messageInputToolbar = [[MSMessageInputToolbar alloc] init];
-	self.messageInputToolbar.viewModel = [self.delegate messageInputViewModel];
+	[self.messageInputToolbar setViewModel:self.messageInputViewModel];
 	self.messageInputToolbar.delegate = self;
 	[self.view addSubview:self.messageInputToolbar];
 		

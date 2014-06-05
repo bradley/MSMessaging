@@ -14,7 +14,6 @@
 @property (nonatomic, strong) UIButton *sendButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topPaddingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomPaddingConstraint;
-@property (nonatomic, strong) MSMessageInputViewModel *viewModel;
 
 - (void)sendButtonPressed:(id)sender;
 

@@ -21,9 +21,8 @@
 
 @interface MSMessageInputToolbar : UIToolbar
 
+@property (nonatomic, strong) MSMessageInputViewModel *viewModel;
 @property (nonatomic, weak) id<MSMessageInputToolbarDelegate> delegate;
-
-- (void)setViewModel:(MSMessageInputViewModel *)viewModel;
 
 - (void)scrollToCaret;
 - (void)clearInputText;
