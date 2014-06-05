@@ -12,18 +12,14 @@
 
 @interface MSMessageInputViewModel : NSObject
 
-@property (nonatomic, assign) CGFloat messageInputCornerRadius;
-@property (nonatomic, assign) CGFloat messageInputBorderWidth;
-@property (nonatomic, strong) UIColor *messageInputBackgroundColor;
-@property (nonatomic, strong) UIColor *messageInputBorderColor;
-@property (nonatomic, strong) UIFont *messageInputFont;
-@property (nonatomic, strong) UIColor *messageInputFontColor;
-@property (nonatomic, strong) UIFont *sendButtonFont;
-@property (nonatomic, copy) NSString *backgroundToolbarName;
-@property (nonatomic, copy) NSString *inputTextViewName;
-@property (nonatomic, copy) NSString *sendButtonName;
-@property (nonatomic, strong) NSArray *layoutConstraints;
 @property (nonatomic, strong, readonly) MSMessageInputLayoutSpec *layoutSpec;
+@property (nonatomic, assign) CGFloat messageTextViewCornerRadius;
+@property (nonatomic, assign) CGFloat messageTextViewBorderWidth;
+@property (nonatomic, strong) UIColor *messageTextViewBackgroundColor;
+@property (nonatomic, strong) UIColor *messageTextViewBorderColor;
+@property (nonatomic, strong) UIColor *messageTextViewFontColor;
+@property (nonatomic, strong) UIFont *messageTextViewFont;
+@property (nonatomic, strong) UIFont *sendButtonFont;
 
 - (instancetype)initWithLayoutSpec:(MSMessageInputLayoutSpec *)layoutSpec;
 

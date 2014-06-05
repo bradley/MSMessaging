@@ -10,7 +10,8 @@
 
 @interface MSMessageInputLayoutSpec : NSObject
 
-@property (nonatomic, assign, readwrite) UIEdgeInsets messageInputTextViewPadding;
-@property (nonatomic, assign, readwrite) UIEdgeInsets messageInputTextViewContentInset;
+@property (nonatomic, assign, readwrite) UIEdgeInsets contentInset;
+@property (nonatomic, assign, readwrite) UIEdgeInsets messageTextViewContentInset;
+@property (nonatomic, assign, readwrite) UIEdgeInsets sendButtonContentEdgeInsets;
 
 @end

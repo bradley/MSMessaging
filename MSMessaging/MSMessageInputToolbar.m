@@ -10,7 +10,7 @@
 
 @interface MSMessageInputToolbar () <UITextViewDelegate>
 
-@property (nonatomic, strong) UITextView *messageInputTextView;
+@property (nonatomic, strong) UITextView *messageTextView;
 @property (nonatomic, strong) UIButton *sendButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topPaddingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomPaddingConstraint;
@@ -19,7 +19,7 @@
 - (void)sendButtonPressed:(id)sender;
 
 - (void)commonInit;
-- (void)addMessageInputTextView;
+- (void)addMessageTextView;
 - (void)addSendButton;
 
 @end
@@ -51,12 +51,13 @@
 
 - (CGSize)intrinsicContentSize
 {
-	[self.messageInputTextView layoutIfNeeded];
-	CGFloat height = MAX(28, self.messageInputTextView.contentSize.height + self.messageInputTextView.textContainerInset.top + self.messageInputTextView.textContainerInset.bottom);
-	if (self.viewModel) {
-		height += self.viewModel.layoutSpec.messageInputTextViewPadding.top + self.viewModel.layoutSpec.messageInputTextViewPadding.bottom;
-	}
+	[self.messageTextView layoutIfNeeded];
 	
+	CGFloat height = self.messageTextView.contentSize.height;
+	if (self.viewModel) {
+		height += self.viewModel.layoutSpec.contentInset.top + self.viewModel.layoutSpec.contentInset.bottom;
+	}
+
 	return CGSizeMake(0.f, height);
 }
 
@@ -64,33 +65,45 @@
 {
 	_viewModel = viewModel;
 	
-	self.messageInputTextView.textContainerInset = viewModel.layoutSpec.messageInputTextViewContentInset;
-	self.messageInputTextView.layer.cornerRadius = viewModel.messageInputCornerRadius;
-	self.messageInputTextView.layer.borderWidth = viewModel.messageInputBorderWidth;
-	self.messageInputTextView.backgroundColor = viewModel.messageInputBackgroundColor;
-	self.messageInputTextView.font = viewModel.messageInputFont;
-	self.messageInputTextView.textColor = viewModel.messageInputFontColor;
-	self.messageInputTextView.layer.borderColor = viewModel.messageInputBorderColor.CGColor;
+	self.messageTextView.textContainerInset = viewModel.layoutSpec.messageTextViewContentInset;
+	self.messageTextView.layer.cornerRadius = viewModel.messageTextViewCornerRadius;
+	self.messageTextView.layer.borderWidth = viewModel.messageTextViewBorderWidth;
+	self.messageTextView.backgroundColor = viewModel.messageTextViewBackgroundColor;
+	self.messageTextView.font = viewModel.messageTextViewFont;
+	self.messageTextView.textColor = viewModel.messageTextViewFontColor;
+	self.messageTextView.layer.borderColor = viewModel.messageTextViewBorderColor.CGColor;
+	self.sendButton.contentEdgeInsets = viewModel.layoutSpec.sendButtonContentEdgeInsets;
 	self.sendButton.titleLabel.font = viewModel.sendButtonFont;
 
 	NSDictionary *views = @{
-		self.viewModel.inputTextViewName : self.messageInputTextView,
-		self.viewModel.sendButtonName : self.sendButton,
+		@"messageTextView" : self.messageTextView,
+		@"sendButton" : self.sendButton,
 	};
-	
-	for (NSString *layoutConstraint in self.viewModel.layoutConstraints) {
-		[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:layoutConstraint options:0 metrics:nil views:views]];
-	}
 
+	const CGFloat leftPadding = viewModel.layoutSpec.contentInset.left;
+	const CGFloat rightPadding = viewModel.layoutSpec.contentInset.right;
+	const CGFloat topPadding = viewModel.layoutSpec.contentInset.top;
+	const CGFloat bottomPadding = viewModel.layoutSpec.contentInset.bottom;
+	
+	NSArray *visualConstraints = @[
+		[NSString stringWithFormat:@"H:|-%.2f-[messageTextView]-%.2f-[sendButton]-%.2f-|", leftPadding, rightPadding, rightPadding],
+		[NSString stringWithFormat:@"V:|-%.2f-[messageTextView]-%.2f-|", topPadding, bottomPadding],
+		[NSString stringWithFormat:@"V:[sendButton]-%.2f-|", bottomPadding],
+	];
+	
+	for (NSString *visualConstraint in visualConstraints) {
+		[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:visualConstraint options:0 metrics:nil views:views]];
+	}
+	
 	[self setNeedsUpdateConstraints];
 }
 
 - (void)scrollToCaret
 {
 	[UIView animateWithDuration:0.1f animations:^{
-		CGRect rect = [self.messageInputTextView caretRectForPosition:self.messageInputTextView.selectedTextRange.start];
-		rect.size.height += self.messageInputTextView.textContainerInset.bottom;
-		[self.messageInputTextView scrollRectToVisible:rect animated:NO];
+		CGRect rect = [self.messageTextView caretRectForPosition:self.messageTextView.selectedTextRange.start];
+		rect.size.height += self.messageTextView.textContainerInset.bottom;
+		[self.messageTextView scrollRectToVisible:rect animated:NO];
 		[self invalidateIntrinsicContentSize];
 		[self layoutIfNeeded];
 	}];
@@ -98,7 +111,7 @@
 
 - (void)clearInputText
 {
-	self.messageInputTextView.text = @"";
+	self.messageTextView.text = @"";
 	if ([self.delegate respondsToSelector:@selector(messageInputToolbarDidChangeText:)]) {
 		[self.delegate messageInputToolbarDidChangeText:self];
 	}
@@ -107,27 +120,27 @@
 - (void)sendButtonPressed:(id)sender
 {
 	if ([self.delegate respondsToSelector:@selector(messageInputToolbar:didSendMessageText:)]) {
-		[self.delegate messageInputToolbar:self didSendMessageText:self.messageInputTextView.text];
+		[self.delegate messageInputToolbar:self didSendMessageText:self.messageTextView.text];
 	}
 
-	self.messageInputTextView.text = @"";
-	[self.messageInputTextView endEditing:YES];
+	self.messageTextView.text = @"";
+	[self.messageTextView endEditing:YES];
 }
 
 - (void)commonInit
 {
 	self.translatesAutoresizingMaskIntoConstraints = NO;
 	
-	[self addMessageInputTextView];
+	[self addMessageTextView];
 	[self addSendButton];
 }
 
-- (void)addMessageInputTextView
+- (void)addMessageTextView
 {
-	self.messageInputTextView = [[UITextView alloc] init];
-	self.messageInputTextView.translatesAutoresizingMaskIntoConstraints = NO;
-	self.messageInputTextView.delegate = self;
-	[self addSubview:self.messageInputTextView];
+	self.messageTextView = [[UITextView alloc] init];
+	self.messageTextView.translatesAutoresizingMaskIntoConstraints = NO;
+	self.messageTextView.delegate = self;
+	[self addSubview:self.messageTextView];
 }
 
 - (void)addSendButton
@@ -137,6 +150,7 @@
 	self.sendButton.userInteractionEnabled = YES;
 	[self.sendButton setTitle:@"Send" forState:UIControlStateNormal];
 	[self.sendButton addTarget:self action:@selector(sendButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+	[self.sendButton sizeToFit];
 	[self addSubview:self.sendButton];
 }
 
