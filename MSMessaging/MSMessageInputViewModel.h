@@ -8,11 +8,11 @@
 
 @import Foundation;
 
-#import "MSMessageInputLayoutSpec.h"
-
 @interface MSMessageInputViewModel : NSObject
 
-@property (nonatomic, strong, readonly) MSMessageInputLayoutSpec *layoutSpec;
+@property (nonatomic, assign, readwrite) UIEdgeInsets contentInset;
+@property (nonatomic, assign, readwrite) UIEdgeInsets messageTextViewContentInset;
+@property (nonatomic, assign, readwrite) UIEdgeInsets sendButtonContentEdgeInsets;
 @property (nonatomic, assign) CGFloat messageTextViewCornerRadius;
 @property (nonatomic, assign) CGFloat messageTextViewBorderWidth;
 @property (nonatomic, strong) UIColor *messageTextViewBackgroundColor;
@@ -20,7 +20,5 @@
 @property (nonatomic, strong) UIColor *messageTextViewFontColor;
 @property (nonatomic, strong) UIFont *messageTextViewFont;
 @property (nonatomic, strong) UIFont *sendButtonFont;
-
-- (instancetype)initWithLayoutSpec:(MSMessageInputLayoutSpec *)layoutSpec;
 
 @end

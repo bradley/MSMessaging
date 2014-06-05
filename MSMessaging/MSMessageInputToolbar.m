@@ -55,7 +55,7 @@
 	
 	CGFloat height = self.messageTextView.contentSize.height;
 	if (self.viewModel) {
-		height += self.viewModel.layoutSpec.contentInset.top + self.viewModel.layoutSpec.contentInset.bottom;
+		height += self.viewModel.contentInset.top + self.viewModel.contentInset.bottom;
 	}
 
 	return CGSizeMake(0.f, height);
@@ -65,14 +65,14 @@
 {
 	_viewModel = viewModel;
 	
-	self.messageTextView.textContainerInset = viewModel.layoutSpec.messageTextViewContentInset;
+	self.messageTextView.textContainerInset = viewModel.messageTextViewContentInset;
 	self.messageTextView.layer.cornerRadius = viewModel.messageTextViewCornerRadius;
 	self.messageTextView.layer.borderWidth = viewModel.messageTextViewBorderWidth;
 	self.messageTextView.backgroundColor = viewModel.messageTextViewBackgroundColor;
 	self.messageTextView.font = viewModel.messageTextViewFont;
 	self.messageTextView.textColor = viewModel.messageTextViewFontColor;
 	self.messageTextView.layer.borderColor = viewModel.messageTextViewBorderColor.CGColor;
-	self.sendButton.contentEdgeInsets = viewModel.layoutSpec.sendButtonContentEdgeInsets;
+	self.sendButton.contentEdgeInsets = viewModel.sendButtonContentEdgeInsets;
 	self.sendButton.titleLabel.font = viewModel.sendButtonFont;
 
 	NSDictionary *views = @{
@@ -80,10 +80,10 @@
 		@"sendButton" : self.sendButton,
 	};
 
-	const CGFloat leftPadding = viewModel.layoutSpec.contentInset.left;
-	const CGFloat rightPadding = viewModel.layoutSpec.contentInset.right;
-	const CGFloat topPadding = viewModel.layoutSpec.contentInset.top;
-	const CGFloat bottomPadding = viewModel.layoutSpec.contentInset.bottom;
+	const CGFloat leftPadding = viewModel.contentInset.left;
+	const CGFloat rightPadding = viewModel.contentInset.right;
+	const CGFloat topPadding = viewModel.contentInset.top;
+	const CGFloat bottomPadding = viewModel.contentInset.bottom;
 	
 	NSArray *visualConstraints = @[
 		[NSString stringWithFormat:@"H:|-%.2f-[messageTextView]-%.2f-[sendButton]-%.2f-|", leftPadding, rightPadding, rightPadding],

@@ -8,22 +8,6 @@
 
 #import "MSMessageInputViewModel.h"
 
-@interface MSMessageInputViewModel ()
-
-@property (nonatomic, strong) MSMessageInputLayoutSpec *layoutSpec;
-
-@end
-
 @implementation MSMessageInputViewModel
-
-- (instancetype)initWithLayoutSpec:(MSMessageInputLayoutSpec *)layoutSpec
-{
-	self = [super init];
-	if (self) {
-		self.layoutSpec = layoutSpec;
-	}
-	
-	return self;
-}
 
 @end
