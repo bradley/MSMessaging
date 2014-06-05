@@ -8,16 +8,20 @@
 
 @import Foundation;
 
-#import "MSMessageBubbleLayoutSpec.h"
-
 @interface MSMessageBubbleViewModel : NSObject
+
+@property (nonatomic, assign, readonly) CGSize containerSize;
+@property (nonatomic, assign, readonly) CGSize cellSize;
+@property (nonatomic, assign, readonly) CGRect bubbleMaskFrame;
+@property (nonatomic, assign, readonly) CGRect messageLabelFrame;
+@property (nonatomic, assign, readonly) CGRect gradientFrame;
+@property (nonatomic, assign, readonly) CGRect bubbleMaskLayerContentsCenter;
 
 @property (nonatomic, copy, readonly) NSString *messageLabelText;
 @property (nonatomic, strong, readonly) UIColor *messageLabelColor;
 @property (nonatomic, strong, readonly) UIColor *messageBackgroundColor;
 @property (nonatomic, assign, readonly) CATransform3D bubbleMaskTransform;
-@property (nonatomic, strong, readonly) MSMessageBubbleLayoutSpec *layoutSpec;
 
-- (instancetype)initWithMessageLabelText:(NSString *)messageLabelText isAuthor:(BOOL)isAuthor layoutSpec:(MSMessageBubbleLayoutSpec *)layoutSpec;
+- (instancetype)initWithContainerSize:(CGSize)containerSize messageText:(NSString *)messageText isAuthor:(BOOL)isAuthor;
 
 @end

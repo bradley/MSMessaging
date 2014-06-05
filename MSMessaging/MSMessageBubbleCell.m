@@ -58,11 +58,10 @@
 	
 	self.messageLabel.text = viewModel.messageLabelText;
 	self.messageLabel.textColor = viewModel.messageLabelColor;
-	self.bubbleMaskLayer.contentsCenter = [viewModel.layoutSpec bubbleMaskLayerContentsCenter];
-	
-	self.messageLabel.frame = [viewModel.layoutSpec messageLabelFrame];
-	self.gradientLayer.frame = [viewModel.layoutSpec gradientFrame];
-	self.bubbleMaskLayer.frame = [viewModel.layoutSpec bubbleMaskFrame];
+	self.bubbleMaskLayer.contentsCenter = viewModel.bubbleMaskLayerContentsCenter;
+	self.messageLabel.frame = viewModel.messageLabelFrame;
+	self.gradientLayer.frame = viewModel.gradientFrame;
+	self.bubbleMaskLayer.frame = viewModel.bubbleMaskFrame;
 	self.bubbleMaskLayer.transform = viewModel.bubbleMaskTransform;
 
 	[CATransaction commit];

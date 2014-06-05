@@ -8,8 +8,6 @@
 
 #import "ViewController.h"
 #import "MSMessageViewController.h"
-#import "MSMessageInputViewModel.h"
-#import "MSMessageBubbleViewModel.h"
 #import "Message.h"
 
 @interface ViewController () <MSMessageViewControllerDelegate>
@@ -21,8 +19,6 @@
 - (IBAction)addRandomMessage:(id)sender;
 
 - (Message *)createRandomMessage;
-
-- (MSMessageBubbleViewModel *)messageBubbleViewModelForMessageText:(NSString *)messageText isAuthor:(BOOL)isAuthor;
 
 @end
 
@@ -70,33 +66,6 @@
 	return [[Message alloc] initWithMessageText:randomMessageText isAuthor:randomIsAuthor];
 }
 
-- (MSMessageBubbleViewModel *)messageBubbleViewModelForMessageText:(NSString *)messageText isAuthor:(BOOL)isAuthor
-{
-	MSMessageBubbleLayoutSpec *layoutSpec = [[MSMessageBubbleLayoutSpec alloc] init];
-	layoutSpec.collectionViewSize = self.view.bounds.size;
-	layoutSpec.bubbleMaskImageSize = CGSizeMake(48.f, 35.f);
-	layoutSpec.bubbleMaskOffset = CGPointMake(20.f, 16.f);
-	layoutSpec.alignMessageLabelRight = isAuthor;
-	
-	if (isAuthor) {
-		layoutSpec.messageBubbleInsets = UIEdgeInsetsMake(0.f, 74.f, 0.f, 10.f);
-		layoutSpec.messageLabelInsets = UIEdgeInsetsMake(6.5f, 12.f, 7.5f, 18.f);
-	}
-	else {
-		layoutSpec.messageBubbleInsets = UIEdgeInsetsMake(0.f, 10.f, 0.f, 74.f);
-		layoutSpec.messageLabelInsets = UIEdgeInsetsMake(6.5f, 18.f, 7.5f, 12.f);
-	}
-	
-	CGFloat constraintWidth = self.view.bounds.size.width - (layoutSpec.messageBubbleInsets.left + layoutSpec.messageBubbleInsets.right + layoutSpec.messageLabelInsets.left + layoutSpec.messageLabelInsets.right);
-	CGSize constraintSize = CGSizeMake(constraintWidth, MAXFLOAT);
-	layoutSpec.messageLabelSize = [messageText boundingRectWithSize:constraintSize
-																			  options:NSStringDrawingUsesLineFragmentOrigin
-																		  attributes:@{ NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody] }
-																			  context:nil].size;
-	
-	return [[MSMessageBubbleViewModel alloc] initWithMessageLabelText:messageText isAuthor:isAuthor layoutSpec:layoutSpec];
-}
-
 #pragma mark MessageViewControllerDelegate
 
 - (NSUInteger)messageCount
@@ -106,20 +75,24 @@
 
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	Message *message = self.messages[ indexPath.row ];
-	MSMessageBubbleViewModel *viewModel = [self messageBubbleViewModelForMessageText:message.messageText isAuthor:message.isAuthor];
-	return [viewModel.layoutSpec cellSize];
+	MSMessageBubbleViewModel *viewModel = [self messageBubbleViewModelAtIndexPath:indexPath];
+	return viewModel.cellSize;
 }
 
 - (MSMessageBubbleViewModel *)messageBubbleViewModelAtIndexPath:(NSIndexPath *)indexPath;
 {
 	Message *message = self.messages[ indexPath.row ];
-	return [self messageBubbleViewModelForMessageText:message.messageText isAuthor:message.isAuthor];
+	MSMessageBubbleViewModel *viewModel = message.viewModel;
+	if (!viewModel || !CGSizeEqualToSize(viewModel.containerSize, self.view.bounds.size)) {
+		viewModel = message.viewModel = [[MSMessageBubbleViewModel alloc] initWithContainerSize:self.view.bounds.size messageText:message.messageText isAuthor:message.isAuthor];
+	}
+	return viewModel;
 }
 
 - (void)messageViewController:(MSMessageViewController *)messageViewController didSendMessageText:(NSString *)messageText
 {
 	Message *message = [[Message alloc] initWithMessageText:messageText isAuthor:YES];
+	message.viewModel = [[MSMessageBubbleViewModel alloc] initWithContainerSize:self.view.bounds.size messageText:message.messageText isAuthor:message.isAuthor];
 	[self.messages addObject:message];
 	[self.messageViewController reloadData];
 }

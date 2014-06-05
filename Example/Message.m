@@ -7,6 +7,7 @@
 //
 
 #import "Message.h"
+#import "MSMessageBubbleViewModel.h"
 
 @interface Message ()
 

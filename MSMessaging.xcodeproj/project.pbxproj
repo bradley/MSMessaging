@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D81E7C111935771700A7ED64 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E7C101935771700A7ED64 /* main.m */; };
 		D81E7C15193577CA00A7ED64 /* MSMessageBubbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E7C14193577CA00A7ED64 /* MSMessageBubbleCell.m */; };
-		D81E7C1B193578BC00A7ED64 /* MSMessageBubbleLayoutSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E7C18193578BC00A7ED64 /* MSMessageBubbleLayoutSpec.m */; };
 		D81E7C1C193578BC00A7ED64 /* MSMessageBubbleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E7C1A193578BC00A7ED64 /* MSMessageBubbleViewModel.m */; };
 		D81E7C26193579BD00A7ED64 /* MSMessageInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E7C20193579BD00A7ED64 /* MSMessageInputToolbar.m */; };
 		D81E7C28193579BD00A7ED64 /* MSMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E7C24193579BD00A7ED64 /* MSMessageViewController.m */; };
@@ -45,8 +44,6 @@
 		D81E7C101935771700A7ED64 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Example/main.m; sourceTree = "<group>"; };
 		D81E7C13193577CA00A7ED64 /* MSMessageBubbleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSMessageBubbleCell.h; sourceTree = "<group>"; };
 		D81E7C14193577CA00A7ED64 /* MSMessageBubbleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSMessageBubbleCell.m; sourceTree = "<group>"; };
-		D81E7C17193578BC00A7ED64 /* MSMessageBubbleLayoutSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSMessageBubbleLayoutSpec.h; sourceTree = "<group>"; };
-		D81E7C18193578BC00A7ED64 /* MSMessageBubbleLayoutSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSMessageBubbleLayoutSpec.m; sourceTree = "<group>"; };
 		D81E7C19193578BC00A7ED64 /* MSMessageBubbleViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSMessageBubbleViewModel.h; sourceTree = "<group>"; };
 		D81E7C1A193578BC00A7ED64 /* MSMessageBubbleViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSMessageBubbleViewModel.m; sourceTree = "<group>"; };
 		D81E7C1F193579BD00A7ED64 /* MSMessageInputToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSMessageInputToolbar.h; sourceTree = "<group>"; };
@@ -118,8 +115,6 @@
 			children = (
 				D81E7C21193579BD00A7ED64 /* MSMessageInputViewModel.h */,
 				D8A38B411940425A00195257 /* MSMessageInputViewModel.m */,
-				D81E7C17193578BC00A7ED64 /* MSMessageBubbleLayoutSpec.h */,
-				D81E7C18193578BC00A7ED64 /* MSMessageBubbleLayoutSpec.m */,
 				D81E7C19193578BC00A7ED64 /* MSMessageBubbleViewModel.h */,
 				D81E7C1A193578BC00A7ED64 /* MSMessageBubbleViewModel.m */,
 			);
@@ -354,7 +349,6 @@
 			files = (
 				D81E7C26193579BD00A7ED64 /* MSMessageInputToolbar.m in Sources */,
 				D81E7C28193579BD00A7ED64 /* MSMessageViewController.m in Sources */,
-				D81E7C1B193578BC00A7ED64 /* MSMessageBubbleLayoutSpec.m in Sources */,
 				D81E7C111935771700A7ED64 /* main.m in Sources */,
 				D8DBD8231935757700B612DB /* ViewController.m in Sources */,
 				D8A38B421940425A00195257 /* MSMessageInputViewModel.m in Sources */,

@@ -8,10 +8,13 @@
 
 @import Foundation;
 
+@class MSMessageBubbleViewModel;
+
 @interface Message : NSObject
 
 @property (nonatomic, copy, readonly) NSString *messageText;
 @property (nonatomic, assign, readonly) BOOL isAuthor;
+@property (nonatomic, strong) MSMessageBubbleViewModel *viewModel;
 
 - (instancetype)initWithMessageText:(NSString *)messageText isAuthor:(BOOL)isAuthor;
 
